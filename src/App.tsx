@@ -11,47 +11,19 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    // Router wraps the entire app to enable routing
-    <div>
-      {/* Toast message appearance */}
-
-      {/* Header of website */}
+    <>
       <Header />
-      {/* Define all routes here */}
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        pauseOnHover
-        theme="dark"
-      />
+      <ToastContainer />
       <Routes>
-        {/* Homepage route */}
         <Route path="/" element={<Homepage />} />
-
-        {/* Product listing or individual product page */}
         <Route path="/product" element={<Product />} />
-
-        {/* Contact page */}
         <Route path="/contact" element={<Contact />} />
-
-        {/* Review page for products or feedback */}
         <Route path="/checkout/" element={<CheckoutOverview />} />
-
-        {/* Details page for a specific item or product */}
         <Route path="/checkout/details/" element={<CheckoutDetails />} />
-
-        {/* Success page shown after checkout or form submission */}
         <Route path="/checkout/success" element={<CheckoutSuccess />} />
       </Routes>
-
-      {/* Footer of website */}
       <Footer />
-    </div>
+    </>
   );
 }
 
