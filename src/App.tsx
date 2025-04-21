@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import Product from "./pages/Product";
+import Homepage from "./pages/Homepage";
+import Contact from "./pages/Contact";
+import CheckoutDetails from "./pages/CheckoutDetails";
+import CheckoutSuccess from "./pages/CheckoutSuccess";
+import CheckoutOverview from "./pages/CheckoutOverview";
+import Header from "./header/Header";
+import Footer from "./footer/Footer";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    // Router wraps the entire app to enable routing
+    <Router>
+      {/* Toast message appearance */}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        pauseOnHover
+        theme="dark"
+      />
+
+      {/* Header of website */}
+      <Header />
+      {/* Define all routes here */}
+      <Routes>
+        {/* Homepage route */}
+        <Route path="/" element={<Homepage />} />
+
+        {/* Product listing or individual product page */}
+        <Route path="/product" element={<Product />} />
+
+        {/* Contact page */}
+        <Route path="/contact" element={<Contact />} />
+
+        {/* Review page for products or feedback */}
+        <Route path="/checkout/" element={<CheckoutOverview />} />
+
+        {/* Details page for a specific item or product */}
+        <Route path="/checkout/details/" element={<CheckoutDetails />} />
+
+        {/* Success page shown after checkout or form submission */}
+        <Route path="/checkout/success" element={<CheckoutSuccess />} />
+      </Routes>
+
+      {/* Footer of website */}
+      <Footer />
+    </Router>
+  );
 }
 
-export default App
+export default App;
