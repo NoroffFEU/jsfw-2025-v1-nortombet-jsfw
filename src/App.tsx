@@ -12,8 +12,12 @@ import Footer from "./components/Footer";
 function App() {
   return (
     // Router wraps the entire app to enable routing
-    <Router>
+    <div>
       {/* Toast message appearance */}
+
+      {/* Header of website */}
+      <Header />
+      {/* Define all routes here */}
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -25,10 +29,6 @@ function App() {
         pauseOnHover
         theme="dark"
       />
-
-      {/* Header of website */}
-      <Header />
-      {/* Define all routes here */}
       <Routes>
         {/* Homepage route */}
         <Route path="/" element={<Homepage />} />
@@ -51,7 +51,7 @@ function App() {
 
       {/* Footer of website */}
       <Footer />
-    </Router>
+    </div>
   );
 }
 
