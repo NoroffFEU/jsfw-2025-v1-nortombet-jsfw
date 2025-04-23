@@ -3,7 +3,7 @@ import React, { ButtonHTMLAttributes } from "react";
 type BaseButtonProps = {
   label?: string;
   className?: string;
-  variant?: "primary" | "secondary" | "danger";
+  variant?: "primary" | "secondary" | "danger" | "ghost";
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
@@ -45,17 +45,24 @@ const BaseButton: React.FC<BaseButtonProps> = ({
   children,
   ...props
 }) => {
-  const baseClasses =
-    "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+  const baseClasses = `
+  cursor-pointer inline-flex items-center justify-center rounded-sm 
+  font-medium transition-colors focus-visible:outline-none 
+  focus-visible:ring-2 focus-visible:ring-offset-2 
+  focus-visible:ring-offset-white
+  disabled:opacity-50 disabled:cursor-not-allowed
+  active:scale-95 transition-transform
+`.trim();
 
   const variantClasses = {
     primary: "bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500",
     secondary: "bg-gray-200 text-gray-900 hover:bg-gray-300 focus-visible:ring-gray-500",
     danger: "bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500",
+    ghost: "bg-transparent hover:bg-gray-100/20 focus-visible:ring-gray-500",
   };
 
   return (
-    <button className={`${baseClasses} ${variantClasses[variant]} ${className}`} {...props}>
+    <button type="button" className={`${baseClasses} ${variantClasses[variant]} ${className}`} {...props}>
       {children || label}
     </button>
   );
