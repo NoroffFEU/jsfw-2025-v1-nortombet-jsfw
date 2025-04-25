@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import { RiCloseLargeFill } from "react-icons/ri";
+import { assets } from "../assets/assets.ts";
 
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -27,6 +28,13 @@ const Header = () => {
   return (
     <div>
       <nav className="sticky top-0 z-50 h-[60px] flex items-center justify-between bg-secondary shadow-md">
+        <div>
+          <img
+            className="mx-2 w-45"
+            src={assets.logo_online_shop}
+            alt="Online-Shop logo"
+          />
+        </div>
         <ul className="hidden md:flex items-center text-2xl font-gelasio gap-6 mx-4 sm:mx-[10%]">
           <NavLink to="/">
             <li className="relative cursor-pointer group">
