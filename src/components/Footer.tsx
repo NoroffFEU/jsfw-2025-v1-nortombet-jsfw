@@ -12,7 +12,7 @@ const Footer = () => {
             <img
               className="mb-5 w-40"
               src={assets.logo_online_shop}
-              alt="RainyDays Logo"
+              alt="Online-Shop Logo"
             />
             <p className="w-full md:w2/3 leading-6">
               Welcome to our store! We're an online shop dedicated to bring you
