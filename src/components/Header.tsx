@@ -1,7 +1,92 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { BiMenuAltRight } from "react-icons/bi";
+import { RiCloseLargeFill } from "react-icons/ri";
+import { assets } from "../assets/assets.ts";
 
 const Header = () => {
-  return <div>Hello i am Header</div>;
+  const [mobileMenu, setMobileMenu] = useState(false);
+
+  const navigate = useNavigate();
+
+  const toggleMobileMenu = () => {
+    setMobileMenu(!mobileMenu);
+  };
+
+  useEffect(() => {
+    if (mobileMenu) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [mobileMenu]);
+
+  return (
+    <div>
+      <nav className="sticky top-0 z-50 h-[60px] flex items-center justify-between bg-secondary shadow-md">
+        <div>
+          <img
+            className="mx-2 w-45"
+            src={assets.logo_online_shop}
+            alt="Online-Shop logo"
+          />
+        </div>
+        <ul className="hidden md:flex items-center text-2xl font-gelasio gap-6 mx-4 sm:mx-[10%]">
+          <NavLink to="/">
+            <li className="relative cursor-pointer group">
+              Home
+              <hr className="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
+            </li>
+          </NavLink>
+          <NavLink to="/contact">
+            <li className="relative cursor-pointer group">
+              Contact
+              <hr className="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
+            </li>
+          </NavLink>
+          <NavLink to="/about">
+            <li className="relative cursor-pointer group">
+              About
+              <hr className="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
+            </li>
+          </NavLink>
+        </ul>
+
+        <div className="flex ml-4 md:mx-[10%] cursor-pointer"></div>
+
+        {/* Mobile Menu Toggle */}
+        <BiMenuAltRight
+          size={40}
+          className="mr-4 md:hidden"
+          onClick={toggleMobileMenu}
+        />
+
+        {/* Mobile Menu */}
+        {mobileMenu && (
+          <div className="md:hidden fixed w-full top-0 bottom-0 z-40 overflow-hidden bg-white transition-all flex flex-col">
+            <div className="flex justify-end p-4">
+              <RiCloseLargeFill size={40} onClick={toggleMobileMenu} />
+            </div>
+            <ul className="flex flex-col items-center gap-2 mt-5 px-5 text-2xl font-medium flex-grow">
+              <NavLink onClick={() => setMobileMenu(false)} to="/">
+                <p className="px-4 py-2 rounded inline-block">HOME</p>
+              </NavLink>
+              <NavLink onClick={() => setMobileMenu(false)} to="/contact">
+                <p className="px-4 py-2 rounded inline-block">CONTACT</p>
+              </NavLink>
+              <NavLink onClick={() => setMobileMenu(false)} to="/about">
+                <p className="px-4 py-2 rounded inline-block">ABOUT</p>
+              </NavLink>
+            </ul>
+          </div>
+        )}
+      </nav>
+    </div>
+  );
 };
 
 export default Header;
