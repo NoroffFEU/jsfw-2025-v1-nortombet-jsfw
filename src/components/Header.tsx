@@ -3,10 +3,15 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { assets } from "../assets/assets.ts";
+import BaseButton from "./ui/BaseButton.tsx";
+import { BsHandbag, BsHandbagFill } from "react-icons/bs";
+import CartSidebar from "./CartSidebar.tsx";
 
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
-
+  const [isCartOpen, setCartOpen] = useState(false);
+  const openCart = () => setCartOpen(true);
+  const closeCart = () => setCartOpen(false);
   const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
@@ -29,11 +34,11 @@ const Header = () => {
     <div>
       <nav className="sticky top-0 z-50 h-[60px] flex items-center justify-between bg-secondary shadow-md">
         <div>
-          <img
+          {/* <img
             className="mx-2 w-45"
             src={assets.logo_online_shop}
             alt="Online-Shop logo"
-          />
+          /> */}
         </div>
         <ul className="hidden md:flex items-center text-2xl font-gelasio gap-6 mx-4 sm:mx-[10%]">
           <NavLink to="/">
@@ -56,14 +61,15 @@ const Header = () => {
           </NavLink>
         </ul>
 
-        <div className="flex ml-4 md:mx-[10%] cursor-pointer"></div>
+        {/* Cart button || NOTE! Add turnery operator to display different bag icons and counter*/}
+        <div className="flex ml-4 md:mx-[10%] text-2xl relative">
+          <BaseButton variant="ghost" onClick={openCart} className="relative p-2 rounded-full" aria-label="Cart">
+            <BsHandbagFill />
+          </BaseButton>
+        </div>
 
         {/* Mobile Menu Toggle */}
-        <BiMenuAltRight
-          size={40}
-          className="mr-4 md:hidden"
-          onClick={toggleMobileMenu}
-        />
+        <BiMenuAltRight size={40} className="mr-4 md:hidden" onClick={toggleMobileMenu} />
 
         {/* Mobile Menu */}
         {mobileMenu && (
@@ -85,6 +91,7 @@ const Header = () => {
           </div>
         )}
       </nav>
+      {isCartOpen && <CartSidebar isOpen={isCartOpen} onClose={closeCart} />}
     </div>
   );
 };
