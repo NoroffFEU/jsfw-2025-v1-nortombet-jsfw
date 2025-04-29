@@ -1,4 +1,3 @@
-// src/utils/sortProducts.ts
 import { Product } from "../../API/fetchApi"; 
 
 // Define the types of sorting you support
