@@ -3,6 +3,8 @@ import { fetchProducts, Product } from "../API/fetchApi";
 import SearchInput from "../components/product/SearchInput";
 import SortDropdown from "../components/product/SortDropdown";
 import { sortProducts, SortOption } from "../components/product/SortProduct"; // Ensure correct path
+import ItemCard from '../components/product/ItemCard';
+
 
 const Homepage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -53,16 +55,8 @@ const Homepage = () => {
       {/* Product List */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredProducts.map((product) => (
-          <div key={product.id} className="bg-white shadow-md rounded-lg p-4">
-            <img
-              src={product.image.url}
-              alt={product.image.alt}
-              className="h-48 w-full object-cover rounded-md mb-4"
-            />
-            <h2 className="text-xl font-semibold">{product.title}</h2>
-            <p className="text-green-600 font-bold mt-2">${product.discountedPrice.toFixed(2)}</p>
-            <p className="text-gray-500 mt-1">⭐ {product.rating} / 5</p>
-          </div>
+          <ItemCard key={product.id} product={product}/>
+         
         ))}
       </div>
     </div>
