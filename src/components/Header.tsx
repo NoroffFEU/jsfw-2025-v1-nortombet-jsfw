@@ -34,11 +34,11 @@ const Header = () => {
     <div>
       <nav className="sticky top-0 z-50 h-[60px] flex items-center justify-between bg-secondary shadow-md">
         <div>
-          {/* <img
+           <img
             className="mx-2 w-45"
             src={assets.logo_online_shop}
             alt="Online-Shop logo"
-          /> */}
+          />
         </div>
         <ul className="hidden md:flex items-center text-2xl font-gelasio gap-6 mx-4 sm:mx-[10%]">
           <NavLink to="/">
