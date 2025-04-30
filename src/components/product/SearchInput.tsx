@@ -30,4 +30,5 @@ interface SearchInputProps {
       </div>
     );
   };
+  export default SearchInput;
   

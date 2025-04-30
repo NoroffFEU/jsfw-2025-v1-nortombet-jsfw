@@ -2,22 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { fetchProducts, Product } from "../API/fetchApi";
 import SearchInput from "../components/product/SearchInput";
 import SortDropdown from "../components/product/SortDropdown";
-import { sortProducts, SortOption } from "../components/product/sortProduct"; // ✅ Updated import path
+import { sortProducts, SortOption } from "../components/product/SortProduct"; // Ensure correct path
 
 const Homepage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState(""); // Updated search term state
+  const [searchTerm, setSearchTerm] = useState("");  // State for the search term
   const [sortOption, setSortOption] = useState<SortOption>("title_asc");
 
+  // Fetch products from API
   useEffect(() => {
     const load = async () => {
       try {
         const data = await fetchProducts();
         setProducts(data);
-        setFilteredProducts(data);
+        setFilteredProducts(data);  // Initially show all products
       } catch (err: any) {
         setError(err.message || 'Error loading products');
       } finally {
@@ -27,13 +28,14 @@ const Homepage = () => {
     load();
   }, []);
 
+  // Filter and sort products based on search term and sorting option
   useEffect(() => {
     let filtered = products.filter((product) =>
-      product.title.toLowerCase().includes(searchTerm.toLowerCase()) // Filter products based on search term
+      product.title.toLowerCase().includes(searchTerm.toLowerCase()) // Filter based on search term
     );
-    filtered = sortProducts(filtered, sortOption); // Apply sorting
+    filtered = sortProducts(filtered, sortOption);  // Apply sorting
     setFilteredProducts(filtered);
-  }, [searchTerm, sortOption, products]); // Reapply filtering and sorting when search term or sort option changes
+  }, [searchTerm, sortOption, products]);  // Reapply filtering and sorting when these change
 
   if (loading) return <div className="text-center text-2xl p-10">Loading...</div>;
   if (error) return <div className="text-center text-red-500 text-2xl p-10">Error: {error}</div>;
@@ -44,8 +46,7 @@ const Homepage = () => {
 
       {/* Search & Sort Controls */}
       <div className="flex flex-col sm:flex-row sm:justify-between gap-4 mb-6 max-w-4xl mx-auto">
-        {/* Pass onSearchChange to SearchInput */}
-        <SearchInput onSearchChange={setSearchTerm} /> 
+        <SearchInput value={searchTerm} onChange={setSearchTerm} /> {/* Passing value and setSearchTerm */}
         <SortDropdown onSortChange={setSortOption} />
       </div>
 
