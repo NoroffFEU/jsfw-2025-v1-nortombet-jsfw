@@ -20,7 +20,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl z-50 transform transition-transform ${
+        className={`fixed top-0 right-0 h-full w-full max-w-lg 2xl:max-w-3xl bg-white shadow-2xl z-50 transform transition-transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -32,6 +32,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
               type="button"
               className="text-xl font-black p-2 rounded-full hover:bg-gray-200"
               onClick={onClose}
+              aria-label="Close cart"
             >
               <FaX />
             </BaseButton>
@@ -40,6 +41,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
               type="button"
               className="text-sm font-black p-2 rounded-full hover:bg-gray-200 flex items-center"
               onClick={clearCart}
+              aria-label="Remove all cart items"
             >
               <FaTrashAlt className="mr-2" /> Clear all
             </BaseButton>
@@ -48,30 +50,31 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
           <h2 className="text-lg font-semibold mb-2">Shopping Cart</h2>
 
           {/* Cart Content */}
-          <div className="flex-1 overflow-y-auto space-y-3">
+          <section className="flex-1 overflow-y-auto space-y-3">
             {items.length === 0 ? (
               <p className="w-full border border-gray-400 rounded text-center py-16">Your cart is empty.</p>
             ) : (
               items.map((item) => (
                 <div key={item.id} className="border rounded-lg p-3 shadow-sm bg-red-300">
-                  <span>{item.name}</span>
+                  <h3>{item.name}</h3>
                   <p className="font-black">!!!! TEMPORARY CARD !!!!</p>
                 </div>
               ))
             )}
-          </div>
+          </section>
 
           {/* Footer */}
-          <div className="mt-4 pt-4 border-t flex flex-col sm:flex-row justify-between items-center gap-2">
-            <p className="font-bold text-xl">Total: ${totalPrice.toFixed(2)}</p>
+          <section className="mt-4 pt-4 border-t flex flex-col sm:flex-row justify-between items-center gap-2 pb-8">
+            <h2 className="font-bold text-xl">Total: ${totalPrice.toFixed(2)}</h2>
             <Link
               to="/cart"
               className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full transition"
               onClick={onClose}
+              aria-label="Go to checkout process"
             >
               Checkout
             </Link>
-          </div>
+          </section>
         </div>
       </div>
     </>

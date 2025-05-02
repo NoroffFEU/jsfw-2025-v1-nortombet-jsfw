@@ -40,6 +40,13 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const totalItems = items.reduce((sum, item) => sum + item.amount, 0);
   const totalPrice = items.reduce((sum, item) => sum + (item.discountedPrice || item.price) * item.amount, 0);
 
+  const totalSaved = items.reduce((acc, item) => {
+    if (item.discountedPrice && item.discountedPrice < item.price) {
+      return acc + (item.price - item.discountedPrice) * item.amount;
+    }
+    return acc;
+  }, 0);
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(items));
   }, [items]);
@@ -99,7 +106,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   return (
     <CartContext.Provider
-      value={{ items, addItem, updateAmount, removeItem, clearCart, hasItem, totalItems, totalPrice }}
+      value={{ items, addItem, updateAmount, removeItem, clearCart, hasItem, totalItems, totalSaved, totalPrice }}
     >
       {children}
     </CartContext.Provider>
