@@ -20,6 +20,7 @@ export interface CartContextType {
   clearCart: () => void;
   hasItem: (id: string) => boolean;
   totalItems: number;
+  totalSaved: number;
   totalPrice: number;
 }
 
