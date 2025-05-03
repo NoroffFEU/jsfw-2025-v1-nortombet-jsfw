@@ -119,6 +119,7 @@ const CCInformation = forwardRef(({ onValidationChange }: CCInformationProps, re
           className="w-full p-1 border rounded bg-gray-50"
           inputMode="text"
           pattern="[A-Za-z\s]*"
+          aria-label="Credit card holders name"
         />
         {touched.name && errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
       </div>
@@ -143,6 +144,7 @@ const CCInformation = forwardRef(({ onValidationChange }: CCInformationProps, re
               className="w-full p-1 text-lg border rounded text-center font-mono transition-all duration-700 bg-gray-50"
               inputMode="numeric"
               pattern="[0-9]*"
+              aria-label={`Credit card input value 16 digits total, slot ${index + 1} of 4`}
             />
           </div>
         ))}
@@ -172,6 +174,7 @@ const CCInformation = forwardRef(({ onValidationChange }: CCInformationProps, re
             onChange={(e) => setCVV(e.target.value)}
             onBlur={() => setTouched((prev) => ({ ...prev, cvv: true }))}
             className="w-full p-1 border rounded bg-gray-50"
+            aria-label="3 or 4 digits for CVV code on card"
           />
           {touched.cvv && errors.cvv && <p className="text-red-500 text-sm mt-1">{errors.cvv}</p>}
         </div>

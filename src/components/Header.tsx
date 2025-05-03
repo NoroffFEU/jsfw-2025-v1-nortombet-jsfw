@@ -61,7 +61,12 @@ const Header = () => {
 
         {/* Cart button || NOTE! Add turnery operator to display different bag icons and counter*/}
         <div className="flex ml-4 md:mx-[10%] text-2xl relative">
-          <BaseButton variant="ghost" onClick={openCart} className="relative p-2 rounded-full" aria-label="Open cart">
+          <BaseButton
+            variant="ghost"
+            onClick={openCart}
+            className="relative p-2 rounded-full"
+            aria-label="Open cart window"
+          >
             {totalItems > 0 ? (
               <>
                 <BsHandbagFill size={30} />

@@ -4,9 +4,38 @@ import { FaTrashAlt } from "react-icons/fa";
 import { CartSidebarProps } from "../types/cartTypes";
 import BaseButton from "./ui/BaseButton";
 import { useCart } from "../context/cart/CartContext";
+import CartItemCard from "./product/CartItemCard";
+import { toast } from "react-toastify";
 
 const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
-  const { items, totalPrice, clearCart } = useCart();
+  const { items, totalPrice, clearCart, updateAmount, removeItem } = useCart();
+
+  const handleIncrease = (itemId: string) => {
+    const item = items.find((item) => item.id === itemId);
+    if (item) {
+      updateAmount(itemId, item.amount + 1);
+    }
+  };
+
+  const handleDecrease = (itemId: string) => {
+    const item = items.find((item) => item.id === itemId);
+    if (item) {
+      const newAmount = item.amount - 1;
+      if (newAmount <= 0) {
+        if (confirm("Remove this item from the cart?")) {
+          updateAmount(itemId, 0);
+        }
+      } else {
+        updateAmount(itemId, newAmount);
+      }
+    }
+  };
+
+  const onClearAllClick = () => {
+    if (items.length === 0) return;
+    clearCart();
+    toast.warning("Cart has been cleared");
+  };
 
   return (
     <>
@@ -32,7 +61,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
               type="button"
               className="text-xl font-black p-2 rounded-full hover:bg-gray-200"
               onClick={onClose}
-              aria-label="Close cart"
+              aria-label="Close cart window"
             >
               <FaX />
             </BaseButton>
@@ -40,7 +69,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
               variant="danger"
               type="button"
               className="text-sm font-black p-2 rounded-full hover:bg-gray-200 flex items-center"
-              onClick={clearCart}
+              onClick={onClearAllClick}
               aria-label="Remove all cart items"
             >
               <FaTrashAlt className="mr-2" /> Clear all
@@ -55,10 +84,13 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
               <p className="w-full border border-gray-400 rounded text-center py-16">Your cart is empty.</p>
             ) : (
               items.map((item) => (
-                <div key={item.id} className="border rounded-lg p-3 shadow-sm bg-red-300">
-                  <h3>{item.name}</h3>
-                  <p className="font-black">!!!! TEMPORARY CARD !!!!</p>
-                </div>
+                <CartItemCard
+                  key={item.id}
+                  item={item}
+                  onIncrease={() => handleIncrease(item.id)}
+                  onDecrease={() => handleDecrease(item.id)}
+                  onRemove={() => removeItem(item.id)}
+                />
               ))
             )}
           </section>

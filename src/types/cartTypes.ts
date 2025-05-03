@@ -9,7 +9,7 @@ export interface CartItem {
   price: number;
   amount: number;
   image: string;
-  discountedPrice?: number;
+  discountedPrice: number;
 }
 
 export interface CartContextType {
