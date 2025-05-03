@@ -10,7 +10,7 @@ import { useState } from "react";
 
 const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
   const { items, totalPrice, clearCart, updateAmount, removeItem } = useCart();
-  const [isConfirmClear, setIsConfirmClear] = useState(false); // State to manage confirmation prompt visibility
+  const [isConfirmClear, setIsConfirmClear] = useState(false);
 
   const handleIncrease = (itemId: string) => {
     const item = items.find((item) => item.id === itemId);
@@ -35,17 +35,17 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
 
   const onClearAllClick = () => {
     if (items.length === 0) return;
-    setIsConfirmClear(true); // Show confirmation prompt
+    setIsConfirmClear(true);
   };
 
   const confirmClearCart = () => {
     clearCart();
     toast.warning("Cart has been cleared");
-    setIsConfirmClear(false); // Hide the confirmation prompt
+    setIsConfirmClear(false);
   };
 
   const cancelClearCart = () => {
-    setIsConfirmClear(false); // Hide the confirmation prompt
+    setIsConfirmClear(false);
   };
 
   return (
