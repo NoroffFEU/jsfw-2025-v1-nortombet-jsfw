@@ -6,9 +6,11 @@ import BaseButton from "./ui/BaseButton";
 import { useCart } from "../context/cart/CartContext";
 import CartItemCard from "./product/CartItemCard";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
   const { items, totalPrice, clearCart, updateAmount, removeItem } = useCart();
+  const [isConfirmClear, setIsConfirmClear] = useState(false); // State to manage confirmation prompt visibility
 
   const handleIncrease = (itemId: string) => {
     const item = items.find((item) => item.id === itemId);
@@ -33,8 +35,17 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
 
   const onClearAllClick = () => {
     if (items.length === 0) return;
+    setIsConfirmClear(true); // Show confirmation prompt
+  };
+
+  const confirmClearCart = () => {
     clearCart();
     toast.warning("Cart has been cleared");
+    setIsConfirmClear(false); // Hide the confirmation prompt
+  };
+
+  const cancelClearCart = () => {
+    setIsConfirmClear(false); // Hide the confirmation prompt
   };
 
   return (
@@ -77,6 +88,31 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
           </div>
 
           <h2 className="text-lg font-semibold mb-2">Shopping Cart</h2>
+
+          {/* Confirmation prompt */}
+          {isConfirmClear && (
+            <div className="absolute top-0 left-0 w-full bg-black/70 text-white p-4 text-center">
+              <p>Are you sure you want to clear your cart?</p>
+              <div className="flex justify-center gap-4 mt-2">
+                <BaseButton
+                  variant="danger"
+                  className="px-4 py-2 rounded-full"
+                  onClick={confirmClearCart}
+                  aria-label="Confirm clear cart"
+                >
+                  Yes, clear cart
+                </BaseButton>
+                <BaseButton
+                  variant="ghost"
+                  className="px-4 py-2 rounded-full"
+                  onClick={cancelClearCart}
+                  aria-label="Cancel clear cart"
+                >
+                  Cancel
+                </BaseButton>
+              </div>
+            </div>
+          )}
 
           {/* Cart Content */}
           <section className="flex-1 overflow-y-auto space-y-3">
