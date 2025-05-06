@@ -56,17 +56,29 @@ const Homepage = () => {
         <SortDropdown onSortChange={setSortOption} />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        {loading
-          ? Array.from({ length: 6 }).map((_, idx) => (
-              <ProductSkeleton key={idx} />
-            ))
-          : filteredProducts.map((product) => (
-              <ItemCard key={product.id} product={product} />
-            ))}
-      </div>
+      {loading ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {Array.from({ length: 6 }).map((_, idx) => (
+            <ProductSkeleton key={idx} />
+          ))}
+        </div>
+      ) : filteredProducts.length === 0 ? (
+        <div className="text-center py-10">
+          <p className="text-xl text-gray-700 mb-2">
+            Sorry, no products found matching "{searchTerm}"
+          </p>
+          <p className="text-gray-500">Please try a different search term</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {filteredProducts.map((product) => (
+            <ItemCard key={product.id} product={product} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
 export default Homepage;
+
