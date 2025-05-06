@@ -51,6 +51,7 @@ const ExpiryDateInput = ({ onExpiryChange, currentExpiry = "" }: ExpiryDateInput
           value={month}
           onChange={handleMonthChange}
           className="w-16 sm:w-20 p-1 border rounded transition-all duration-700 bg-gray-50"
+          aria-label="Select month of expiry date for credit card"
         >
           <option value="">MM</option>
           {[...Array(12)].map((_, index) => (
@@ -66,6 +67,7 @@ const ExpiryDateInput = ({ onExpiryChange, currentExpiry = "" }: ExpiryDateInput
           value={year}
           onChange={handleYearChange}
           className="w-16  sm:w-20 p-1 border rounded transition-all duration-700 bg-gray-50"
+          aria-label="Select year of expiry date for credit card"
         >
           <option value="">YY</option>
           {years.map((yearValue) => (

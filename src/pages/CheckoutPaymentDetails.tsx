@@ -48,6 +48,7 @@ const CheckoutDetails = () => {
     const orderNumber = Math.floor(100000000000 + Math.random() * 900000000000).toString();
     sessionStorage.setItem("checkoutCompleted", "true");
     navigate(`/checkout/success/${orderNumber}`);
+    toast.success(`Purchase completed. Order ${orderNumber}`);
   };
 
   return (
