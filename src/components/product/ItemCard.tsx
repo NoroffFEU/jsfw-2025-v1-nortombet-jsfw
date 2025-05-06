@@ -34,16 +34,25 @@ const ItemCard: React.FC<ItemCardProps> = ({ product }) => {
 
         {/* Price */}
         <div className="mt-2">
-          <p className="text-green-600 text-lg font-bold">
-            ${product.discountedPrice.toFixed(2)}
-          </p>
-          <p className="text-sm text-gray-500 line-through">
-            ${product.price.toFixed(2)}
-          </p>
-        </div>
+  {product.discountedPrice < product.price ? (
+    <>
+      <p className="text-green-600 text-lg font-bold">
+        ${product.discountedPrice.toFixed(2)}
+      </p>
+      <p className="text-sm text-gray-500 line-through">
+        ${product.price.toFixed(2)}
+      </p>
+    </>
+  ) : (
+    <p className="text-green-600 text-lg font-bold">
+      ${product.price.toFixed(2)}
+    </p>
+  )}
+</div>
+
 
         {/* Rating */}
-        <p className="text-yellow-500 mt-1">< RiStarLine/> {product.rating} / 5</p>
+        <p className="text-yellow-500 flex items-center mt-1">< RiStarLine/> {product.rating} / 5</p>
       </Link>
     </div>
   );
