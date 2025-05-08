@@ -28,11 +28,7 @@ const Footer = () => {
                   Home
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/about" className="hover:text-primary transition">
-                  About Us
-                </NavLink>
-              </li>
+
               <li>
                 <NavLink
                   to="/contact"

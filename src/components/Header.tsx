@@ -33,7 +33,7 @@ const Header = () => {
   }, [mobileMenu]);
 
   return (
-    <div className="bg-red-200">
+    <div className="bg-pink-200">
       <nav className="sticky top-0 z-50 h-[60px] flex items-center justify-between bg-secondary  max-w-6xl mx-auto">
         <div>
           <img
@@ -60,18 +60,6 @@ const Header = () => {
             {({ isActive }) => (
               <li className="relative cursor-pointer group">
                 Contact
-                <hr
-                  className={`absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 ${
-                    isActive ? "w-full" : "group-hover:w-full"
-                  } `}
-                />
-              </li>
-            )}
-          </NavLink>
-          <NavLink to="/about">
-            {({ isActive }) => (
-              <li className="relative cursor-pointer group">
-                About
                 <hr
                   className={`absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 ${
                     isActive ? "w-full" : "group-hover:w-full"
