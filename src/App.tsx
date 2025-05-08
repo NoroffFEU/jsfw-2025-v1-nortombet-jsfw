@@ -3,7 +3,6 @@ import { ToastContainer } from "react-toastify";
 import Product from "./pages/Product";
 import Homepage from "./pages/Homepage";
 import Contact from "./pages/Contact";
-import About from "./pages/about";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CheckoutLayout from "./components/layout/CheckoutLayout";
@@ -25,7 +24,6 @@ function App() {
           <Route path="/checkout/success/:orderNumber" element={<CheckoutSuccess />} />
         </Route>
         <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
     </>
