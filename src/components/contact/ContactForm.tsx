@@ -179,7 +179,7 @@ export const ContactForm = ({
       <div>
         <button
           type="submit"
-          className="w-full cursor-pointer bg-amber-300 text-black py-2 px-4 rounded-md hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+          className="w-full cursor-pointer bg-indigo-400 text-black py-2 px-4 rounded-md hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
         >
           Send Message
         </button>
