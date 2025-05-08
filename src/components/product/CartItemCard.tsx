@@ -16,6 +16,12 @@ const CartItemCard = ({ item, onIncrease, onDecrease, onRemove }: CartItemProps)
     }
   };
 
+  const onRemoveItemClick = () => {
+    if (item.amount >= 1) {
+      setShowConfirmRemove(true);
+    }
+  };
+
   const confirmRemove = () => {
     onRemove();
     toast.warning(`${item.name} removed from cart`);
@@ -67,10 +73,7 @@ const CartItemCard = ({ item, onIncrease, onDecrease, onRemove }: CartItemProps)
         </div>
         <BaseButton
           variant="danger"
-          onClick={() => {
-            onRemove();
-            toast.warning(`${item.name} (x${item.amount}) removed from cart`);
-          }}
+          onClick={onRemoveItemClick}
           className="text-white transition rounded-full w-8"
           aria-label="Remove item"
         >
