@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchProducts, Product } from "../API/fetchApi";
 import SearchInput from "../components/product/SearchInput";
 import SortDropdown from "../components/product/SortDropdown";
@@ -81,4 +81,3 @@ const Homepage = () => {
 };
 
 export default Homepage;
-

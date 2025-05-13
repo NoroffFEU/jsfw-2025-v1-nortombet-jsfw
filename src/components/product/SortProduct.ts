@@ -1,16 +1,17 @@
-import { Product } from "../../API/fetchApi"; 
+import { Product } from "../../API/fetchApi";
 
-// Define the types of sorting you support
-export type SortOption = 
-  | "price_asc" 
-  | "price_desc" 
-  | "title_asc" 
-  | "title_desc" 
-  | "discountedPrice_asc" 
+export type SortOption =
+  | "price_asc"
+  | "price_desc"
+  | "title_asc"
+  | "title_desc"
+  | "discountedPrice_asc"
   | "discountedPrice_desc";
 
-// This function takes products and sort option, and returns sorted products
-export const sortProducts = (products: Product[], option: SortOption): Product[] => {
+export const sortProducts = (
+  products: Product[],
+  option: SortOption
+): Product[] => {
   switch (option) {
     case "title_asc":
       return [...products].sort((a, b) => a.title.localeCompare(b.title));
@@ -21,10 +22,14 @@ export const sortProducts = (products: Product[], option: SortOption): Product[]
     case "price_desc":
       return [...products].sort((a, b) => b.price - a.price);
     case "discountedPrice_asc":
-      return [...products].sort((a, b) => a.discountedPrice - b.discountedPrice);
+      return [...products].sort(
+        (a, b) => a.discountedPrice - b.discountedPrice
+      );
     case "discountedPrice_desc":
-      return [...products].sort((a, b) => b.discountedPrice - a.discountedPrice);
+      return [...products].sort(
+        (a, b) => b.discountedPrice - a.discountedPrice
+      );
     default:
-      return products; // if unknown sort option, return products as is
+      return products;
   }
 };

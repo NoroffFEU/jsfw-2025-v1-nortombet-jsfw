@@ -1,5 +1,3 @@
-// components/product/ProductSkeleton.tsx
-
 const ProductSkeleton = () => {
   return (
     <div className="relative bg-white border rounded-lg shadow-md p-4 animate-pulse">
