@@ -22,26 +22,22 @@ export const ContactForm = ({
     const newErrors: FormErrors = {};
     let isValid = true;
 
-    // Validate full name (minimum 3 characters)
     if (formData.fullName.trim().length < 3) {
       newErrors.fullName = "Full name must be at least 3 characters";
       isValid = false;
     }
 
-    // Validate subject (minimum 3 characters)
     if (formData.subject.trim().length < 3) {
       newErrors.subject = "Subject must be at least 3 characters";
       isValid = false;
     }
 
-    // Validate email (valid format)
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
       isValid = false;
     }
 
-    // Validate message (minimum 10 characters)
     if (formData.message.trim().length < 10) {
       newErrors.message = "Message must be at least 10 characters";
       isValid = false;
@@ -60,7 +56,6 @@ export const ContactForm = ({
       [name]: value,
     }));
 
-    // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({
         ...prev,
@@ -74,7 +69,6 @@ export const ContactForm = ({
 
     if (validateForm()) {
       onSubmit(formData);
-      // Reset form after successful submission
       setFormData({
         fullName: "",
         subject: "",
