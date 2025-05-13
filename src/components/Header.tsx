@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import { RiCloseLargeFill } from "react-icons/ri";
@@ -90,14 +90,8 @@ const Header = () => {
           </BaseButton>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <BiMenuAltRight
-          size={40}
-          className="mr-4 md:hidden"
-          onClick={toggleMobileMenu}
-        />
+        <BiMenuAltRight size={40} className="mr-4 md:hidden" onClick={toggleMobileMenu} />
 
-        {/* Mobile Menu */}
         {mobileMenu && (
           <div className="md:hidden fixed w-full top-0 bottom-0 z-40 overflow-hidden bg-white transition-all flex flex-col">
             <div className="flex justify-end p-4">

@@ -1,4 +1,3 @@
-// components/checkout/CheckoutDetails.tsx
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -66,7 +65,6 @@ const CheckoutDetails = () => {
       </BaseButton>
       <form onSubmit={handleSubmit} noValidate autoComplete="false">
         <div className="grid grid-cols-1 gap-6 mb-8">
-          {/* <PersonalInformation formData={personalFormData} /> */}
           <CCInformation ref={ccInfoRef} onValidationChange={setIsCCValid} />
         </div>
 

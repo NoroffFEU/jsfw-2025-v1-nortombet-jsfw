@@ -17,7 +17,6 @@ const ProgressBar = ({ steps, currentStep }: ProgressBarProps) => {
       <div className="flex items-center relative">
         {steps.map((step, index) => (
           <div key={step.name} className="flex items-center">
-            {/* Circle with number */}
             <div className="relative">
               <Link to={currentStep > index ? step.path : "#"}>
                 <div
@@ -32,7 +31,6 @@ const ProgressBar = ({ steps, currentStep }: ProgressBarProps) => {
                 </div>
               </Link>
 
-              {/* Label below circle */}
               <div
                 className={`absolute mt-2 font-medium text-center w-24 -left-6
                 ${currentStep >= index ? "text-white underline underline-offset-2 text-lg" : "text-white"}`}
@@ -41,7 +39,6 @@ const ProgressBar = ({ steps, currentStep }: ProgressBarProps) => {
               </div>
             </div>
 
-            {/* Connecting line (except after last step) */}
             {index < steps.length - 1 && (
               <div
                 className={`h-1 w-12 sm:w-24 mx-2 transition-all duration-500
