@@ -34,7 +34,12 @@ const ProductPage: React.FC = () => {
   };
 
   if (loading) return <p>Loading...</p>;
-  if (error || !product) return <p>Error: {error || "Product not found"}</p>;
+  if (error || !product)
+    return (
+      <p className=" min-h-svh bg-amber-50 flex justify-center pt-20 text-red-500 text-2xl ">
+        Error: {error || "Product not found"}
+      </p>
+    );
 
   const discount = product.price - product.discountedPrice;
   const discountPercentage = Math.round((discount / product.price) * 100);
