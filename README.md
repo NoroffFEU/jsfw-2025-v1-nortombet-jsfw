@@ -1,54 +1,120 @@
-# React + TypeScript + Vite
+# Comet-Shop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<!-- Insert image or screenshot of the site here -->
 
-Currently, two official plugins are available:
+### 🌐 Visit the website: [Our online shop Comet-Shop](https://reactnortombet.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 About the Project
 
-## Expanding the ESLint configuration
+**Comet-Shop** is an e-commerce platform where users can browse and buy products in a safe test environment. Users can search for products, sort them, view detailed product information, add items to a cart, and proceed through a checkout process. The system mimics a real shopping experience, including a cart system, payment steps, and a contact form to get help — all without spending any real money.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Key Features:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- 🔍 Product Search
+- 🔃 Sorting by various criteria
+- 🛒 Add to Cart functionality
+- 🧾 View Cart and Cart Management
+- 💳 Checkout Process (Overview, Payment Details, Confirmation)
+- 📦 Order Completion Page
+- 📬 Contact Form
+
+---
+
+## 🎯 Our Plan
+
+We divided the project into core areas and shared responsibilities across the team:
+
+### Noor:
+
+- Planned and implemented **Homepage** layout and functionality
+- Developed the **Search** and **Sort** features
+- Created product **fetching logic**
+- Designed the **ProductCard** component
+- Wrote test: `SearchInput.test.tsx`
+
+### Senbet:
+
+- Built **Header** and **Footer** components
+- Developed the **Single Product** details page
+- Implemented the **Contact Form**
+- Designed the project **logo**
+- Wrote test: `Contact.test.tsx`
+
+### Tom:
+
+- Designed and implemented the **Cart System**
+- Built the **Cart View** component
+- Created the entire **Checkout Flow**:
+  - Checkout Overview
+  - Payment Details
+  - Success Confirmation
+- Wrote test: `cartActions.test.ts`
+
+---
+
+## 🛠 Built With
+
+<div style="display: flex; gap: 10px;">
+ <a href="https://vite.dev/">
+    <img title="Vite" height="48px" width="48px" src="https://skillicons.dev/icons?i=vite"/>
+  </a>
+   <a href="https://react.dev/">
+    <img title="React" height="48px" width="48px" src="https://skillicons.dev/icons?i=react"/>
+  </a>
+   <a href="https://www.typescriptlang.org/">
+    <img title="TypeScript" height="48px" width="48px" src="https://skillicons.dev/icons?i=ts"/>
+  </a>
+   <a href="https://tailwindcss.com/">
+    <img title="Tailwind CSS" height="48px" width="48px" src="https://skillicons.dev/icons?i=tailwind"/>
+  </a>
+</div>
+
+---
+
+## 🚀 Getting Started
+
+### 🔹 Clone or Download
+
+To get a copy of this project, you can **clone** or **fork** the repository:
+
+```bash
+git clone https://github.com/NoroffFEU/jsfw-2025-v1-nortombet-jsfw
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Alternatively, download the ZIP file and extract it.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🔹 Install Dependencies
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+### 🔹 Run the Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+#### 📡 API Reference
+
+This project uses the Noroff Online Shop API, which provides product listings and related endpoints.
+
+📄 Documentation: Noroff Online Shop API
+
+**Base URL:**
+
+```
+https://api.noroff.dev/api/v2/online-shop
+```
+
+---
+
+#### 📩 Contact
+
+[Noor on Github](https://github.com/Noor807)
+
+[Senbet on Github](https://github.com/senbet22)
+
+[Tom on Github](https://github.com/tomive01888)

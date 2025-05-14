@@ -26,15 +26,6 @@ const CheckoutDetails = () => {
   const navigate = useNavigate();
   const ccInfoRef = useRef<any>(null);
 
-  const onClickAddMyDetails = () => {
-    ccInfoRef.current?.fillCardInfo({
-      cardName: "Person Personen",
-      cardNumber: "4242424242424242",
-      expiry: "12/33",
-      cvv: "123",
-    });
-  };
-
   useEffect(() => {
     if (items.length === 0) {
       toast.info("Your cart is empty — returning to cart.");
@@ -60,9 +51,6 @@ const CheckoutDetails = () => {
         city={personalFormData.city}
         country={personalFormData.country}
       />
-      <BaseButton variant="primary" type="button" onClick={onClickAddMyDetails} className="px-4 py-2 my-2">
-        Use my stored credit card
-      </BaseButton>
       <form onSubmit={handleSubmit} noValidate autoComplete="false">
         <div className="grid grid-cols-1 gap-6 mb-8">
           <CCInformation ref={ccInfoRef} onValidationChange={setIsCCValid} />
