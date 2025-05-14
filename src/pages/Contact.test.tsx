@@ -1,9 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import Contact from "../pages/Contact"; // Update with correct path
+import Contact from "../pages/Contact";
 import { toast } from "react-toastify";
 
-// Mock the ContactForm component
 vi.mock("../components/contact/ContactForm", () => ({
   ContactForm: vi.fn(({ onSubmit, onValidationError }) => (
     <div data-testid="mock-contact-form">
@@ -34,7 +33,6 @@ vi.mock("../components/contact/ContactForm", () => ({
   )),
 }));
 
-// Mock react-toastify
 vi.mock("react-toastify", () => ({
   toast: {
     success: vi.fn(),
@@ -46,14 +44,12 @@ describe("Contact Page", () => {
   it("shows appropriate notifications on form submission", () => {
     render(<Contact />);
 
-    // Test success notification
     screen.getByTestId("submit-button").click();
     expect(toast.success).toHaveBeenCalledWith(
       "Your message has been sent successfully!",
       expect.anything()
     );
 
-    // Test error notification
     screen.getByTestId("error-button").click();
     expect(toast.error).toHaveBeenCalledWith(
       "Please fix the errors in the form.",
