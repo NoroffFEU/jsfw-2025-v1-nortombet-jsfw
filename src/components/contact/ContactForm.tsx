@@ -4,6 +4,7 @@ import {
   ContactFormData,
   FormErrors,
 } from "../../types/contactTypes";
+import BaseButton from "../../components/ui/BaseButton";
 
 export const ContactForm = ({
   onSubmit,
@@ -171,12 +172,12 @@ export const ContactForm = ({
       </div>
 
       <div>
-        <button
+        <BaseButton
           type="submit"
-          className="w-full cursor-pointer bg-indigo-400 text-black py-2 px-4 rounded-md hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+          className="w-full cursor-pointer  text-black py-2 px-4 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
         >
           Send Message
-        </button>
+        </BaseButton>
       </div>
     </form>
   );
