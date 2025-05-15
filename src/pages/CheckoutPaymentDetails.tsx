@@ -27,6 +27,10 @@ const CheckoutDetails = () => {
   const ccInfoRef = useRef<any>(null);
 
   useEffect(() => {
+    document.title = "Online Shop | Cart Payment";
+  }, []);
+
+  useEffect(() => {
     if (items.length === 0) {
       toast.info("Your cart is empty — returning to cart.");
       navigate("/cart", { replace: true });

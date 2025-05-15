@@ -7,6 +7,10 @@ const CheckoutSuccess = () => {
   const { clearCart } = useCart();
   const { orderNumber } = useParams();
 
+  useEffect(() => {
+    document.title = "Online Shop | Cart Successful";
+  }, []);
+
   useOneTimeAccess("/");
 
   useEffect(() => {
