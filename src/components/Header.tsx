@@ -90,7 +90,11 @@ const Header = () => {
           </BaseButton>
         </div>
 
-        <BiMenuAltRight size={40} className="mr-4 md:hidden" onClick={toggleMobileMenu} />
+        <BiMenuAltRight
+          size={40}
+          className="mr-4 md:hidden"
+          onClick={toggleMobileMenu}
+        />
 
         {mobileMenu && (
           <div className="md:hidden fixed w-full top-0 bottom-0 z-40 overflow-hidden bg-white transition-all flex flex-col">
@@ -103,9 +107,6 @@ const Header = () => {
               </NavLink>
               <NavLink onClick={() => setMobileMenu(false)} to="/contact">
                 <p className="px-4 py-2 rounded inline-block">CONTACT</p>
-              </NavLink>
-              <NavLink onClick={() => setMobileMenu(false)} to="/about">
-                <p className="px-4 py-2 rounded inline-block">ABOUT</p>
               </NavLink>
             </ul>
           </div>
