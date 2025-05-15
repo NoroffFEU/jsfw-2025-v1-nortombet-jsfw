@@ -51,7 +51,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
   return (
     <>
       <div
-        className={`fixed inset-0 bg-black/50 transition-opacity z-40 ${
+        className={`fixed inset-0 bg-black/50 text-black transition-opacity z-40 ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onClick={onClose}
@@ -67,7 +67,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
             <BaseButton
               variant="ghost"
               type="button"
-              className="text-xl font-black p-2 rounded-full hover:bg-gray-200"
+              className="text-xl text-gray-500 font-black p-2 rounded-full hover:bg-gray-200"
               onClick={onClose}
               aria-label="Close cart window"
             >
@@ -112,7 +112,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
 
           <section className="flex-1 overflow-y-auto space-y-3">
             {items.length === 0 ? (
-              <p className="w-full border border-gray-400 rounded text-center py-16">Your cart is empty.</p>
+              <p className="w-full text-black border border-gray-400 rounded text-center py-16">Your cart is empty.</p>
             ) : (
               items.map((item) => (
                 <CartItemCard
@@ -127,10 +127,10 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
           </section>
 
           <section className="mt-4 pt-4 border-t flex flex-col sm:flex-row justify-between items-center gap-2 pb-8">
-            <h2 className="font-bold text-xl">Total: ${totalPrice.toFixed(2)}</h2>
+            <h2 className="font-bold text-xl text-black">Total: ${totalPrice.toFixed(2)}</h2>
             <Link
               to="/cart"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full transition"
+              className="bg-[#9F8383]/80 text-white hover:bg-[#9F8383] font-semibold py-2 px-4 rounded-full transition"
               onClick={onClose}
               aria-label="Go to checkout process"
             >

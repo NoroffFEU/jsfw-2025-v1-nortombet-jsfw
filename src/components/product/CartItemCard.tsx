@@ -33,7 +33,7 @@ const CartItemCard = ({ item, onIncrease, onDecrease, onRemove }: CartItemProps)
   };
 
   return (
-    <article className="relative flex flex-col gap-4 items-center justify-between border-b py-4">
+    <article className="relative flex flex-col gap-4 items-center justify-between border-b py-4 text-black">
       <div className="flex justify-start w-full gap-2">
         <img src={item.image} alt={item.name} className="w-20 h-20 object-cover" />
         <div className="flex flex-col w-3/5">
