@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
@@ -15,6 +15,10 @@ const ProductPage: React.FC = () => {
   const [quantity, setQuantity] = useState<number>(1);
   const { addItem, hasItem } = useCart();
   const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    document.title = `Online Shop | ${product?.title}`;
+  }, [id, product]);
 
   const toggleReviews = () => {
     setIsVisible(!isVisible);

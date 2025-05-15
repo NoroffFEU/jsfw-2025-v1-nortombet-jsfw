@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ContactForm } from "../components/contact/ContactForm";
 import { ContactFormData } from "../types/contactTypes";
 import { toast } from "react-toastify";
@@ -16,6 +17,10 @@ const Contact = () => {
       draggable: true,
     });
   };
+
+  useEffect(() => {
+    document.title = "Online Shop | Contact";
+  }, []);
 
   const handleValidationError = () => {
     toast.error(`Please fix the errors in the form.`, {

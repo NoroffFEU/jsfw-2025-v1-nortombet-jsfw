@@ -15,6 +15,10 @@ const Homepage = () => {
   const [sortOption, setSortOption] = useState<SortOption>("title_asc");
 
   useEffect(() => {
+    document.title = "Online Shop | Home";
+  }, []);
+
+  useEffect(() => {
     const load = async () => {
       setTimeout(async () => {
         try {

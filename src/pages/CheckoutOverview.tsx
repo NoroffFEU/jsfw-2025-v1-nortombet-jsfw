@@ -2,12 +2,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import BaseButton from "../components/ui/BaseButton";
 import { useCart } from "../context/cart/CartContext";
+import { useEffect } from "react";
 
 const CartOverview = () => {
   const { items, removeItem, totalPrice, totalSaved } = useCart();
   const navigate = useNavigate();
-
   const totalCostBeforeReduction = (totalPrice + totalSaved).toFixed(2);
+
+  useEffect(() => {
+    document.title = "Online Shop | Cart Overview";
+  }, []);
 
   return (
     <section className="max-w-2xl mx-auto p-4 my-20 bg-gray-200 rounded-lg">
