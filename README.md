@@ -1,12 +1,12 @@
-# Comet-Shop
+# Online-Shopping
 
-<!-- Insert image or screenshot of the site here -->
+![image](https://github.com/user-attachments/assets/6469185d-fbce-4ada-8e48-756b66b973bb)
 
-### 🌐 Visit the website: [Our online shop Comet-Shop](https://reactnortombet.netlify.app/)
+### 🌐 Visit the website: [Online-Shopping](https://nortombet.netlify.app/)
 
 ## 📌 About the Project
 
-**Comet-Shop** is an e-commerce platform where users can browse and buy products in a safe test environment. Users can search for products, sort them, view detailed product information, add items to a cart, and proceed through a checkout process. The system mimics a real shopping experience, including a cart system, payment steps, and a contact form to get help — all without spending any real money.
+**Online-Shopping** is an e-commerce platform where users can browse and buy products in a safe test environment. Users can search for products, sort them, view detailed product information, add items to a cart, and proceed through a checkout process. The system mimics a real shopping experience, including a cart system, payment steps, and a contact form to get help — all without spending any real money.
 
 ### Key Features:
 
