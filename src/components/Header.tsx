@@ -90,7 +90,11 @@ const Header = () => {
           </BaseButton>
         </div>
 
-        <BiMenuAltRight size={40} className="mr-4 md:hidden" onClick={toggleMobileMenu} />
+        <BiMenuAltRight
+          size={40}
+          className="mr-4 md:hidden"
+          onClick={toggleMobileMenu}
+        />
 
         {mobileMenu && (
           <div className="md:hidden text-black fixed w-full top-0 bottom-0 z-40 overflow-hidden bg-white transition-all flex flex-col">
