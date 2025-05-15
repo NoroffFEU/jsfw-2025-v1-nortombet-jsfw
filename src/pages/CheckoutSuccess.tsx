@@ -28,7 +28,7 @@ const CheckoutSuccess = () => {
 
         <p className="mb-6">A confirmation email has been sent to your registered email address.</p>
 
-        <Link to="/" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 place-self-center">
+        <Link to="/" className=" text-white px-4 py-2 rounded  place-self-center">
           Continue Shopping
         </Link>
       </div>
