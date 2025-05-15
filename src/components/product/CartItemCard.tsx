@@ -33,7 +33,7 @@ const CartItemCard = ({ item, onIncrease, onDecrease, onRemove }: CartItemProps)
   };
 
   return (
-    <article className="relative flex flex-col gap-4 items-center justify-between border-b py-4 text-black">
+    <article className="relative flex flex-col gap-4 items-center justify-between border-b-1 border-gray-300 py-4 text-black">
       <div className="flex justify-start w-full gap-2">
         <img src={item.image} alt={item.name} className="w-20 h-20 object-cover" />
         <div className="flex flex-col w-3/5">
@@ -82,8 +82,8 @@ const CartItemCard = ({ item, onIncrease, onDecrease, onRemove }: CartItemProps)
       </div>
 
       {showConfirmRemove && (
-        <div className="absolute inset-0 bg-white/95 flex flex-col items-center justify-center text-sm font-medium z-10 rounded-lg shadow-md border">
-          <p className="mb-2">
+        <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px] flex flex-col items-center justify-center text-sm font-medium z-10 rounded-lg shadow-md border">
+          <p className="mb-2 text-white bg-black/60 px-2 py-1 rounded">
             Remove <strong>{item.name}</strong> from cart?
           </p>
           <div className="flex gap-4">

@@ -8,6 +8,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ value, onChange }) => {
     <div className="relative w-full">
       <input
         type="text"
+        aria-label="Search for product here"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Search products..."

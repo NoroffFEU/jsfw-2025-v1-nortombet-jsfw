@@ -1,4 +1,3 @@
-// Enhanced ProgressBar.tsx
 import { Link } from "react-router-dom";
 
 type ProgressStep = {
@@ -23,7 +22,7 @@ const ProgressBar = ({ steps, currentStep }: ProgressBarProps) => {
                   className={`w-12 h-12 rounded-full flex items-center justify-center border-4 transition-all duration-300
                     ${currentStep > index ? "bg-green-500 border-green-500 text-white" : ""}
                     ${currentStep === index ? "border-blue-500 bg-white text-blue-500" : ""}
-                    ${currentStep < index ? "border-gray-300 bg-white text-gray-400" : ""}
+                    ${currentStep < index ? "border-gray-500 bg-white text-gray-500" : ""}
                     ${currentStep > index ? "shadow-lg" : "shadow-md"}
                   `}
                 >
@@ -33,7 +32,7 @@ const ProgressBar = ({ steps, currentStep }: ProgressBarProps) => {
 
               <div
                 className={`absolute mt-2 font-medium text-center w-24 -left-6
-                ${currentStep >= index ? "text-white underline underline-offset-2 text-lg" : "text-white"}`}
+                ${currentStep >= index ? "text-black  text-lg" : "text-black"}`}
               >
                 {step.name}
               </div>
@@ -42,7 +41,7 @@ const ProgressBar = ({ steps, currentStep }: ProgressBarProps) => {
             {index < steps.length - 1 && (
               <div
                 className={`h-1 w-12 sm:w-24 mx-2 transition-all duration-500
-                  ${currentStep > index ? "bg-green-500" : "bg-gray-300"}
+                  ${currentStep > index ? "bg-green-500" : "bg-gray-500"}
                 `}
               />
             )}

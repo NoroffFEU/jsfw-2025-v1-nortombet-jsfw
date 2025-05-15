@@ -45,7 +45,7 @@ const ExpiryDateInput = ({ onExpiryChange, currentExpiry = "" }: ExpiryDateInput
 
   return (
     <div>
-      <label className="block text-sm font-medium mb-1">Expiry Date (MM/YY)</label>
+      <p className="block text-sm font-medium mb-1">Expiry Date (MM/YY)</p>
       <div className="flex space-x-2">
         <select
           value={month}

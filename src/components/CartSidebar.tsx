@@ -84,7 +84,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
             </BaseButton>
           </div>
 
-          <h2 className="text-lg font-semibold mb-2">Shopping Cart</h2>
+          <h2 className="text-lg text-black font-semibold mb-2">Shopping Cart</h2>
 
           {isConfirmClear && (
             <div className="absolute top-0 left-0 w-full bg-black/70 text-white p-4 text-center">
@@ -126,11 +126,11 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
             )}
           </section>
 
-          <section className="mt-4 pt-4 border-t flex flex-col sm:flex-row justify-between items-center gap-2 pb-8">
+          <section className="mt-4 pt-4 border-t flex flex-col sm:flex-row justify-between items-center gap-2 pb-8 border-t-gray-400">
             <h2 className="font-bold text-xl text-black">Total: ${totalPrice.toFixed(2)}</h2>
             <Link
               to="/cart"
-              className="bg-[#9F8383]/80 text-white hover:bg-[#9F8383] font-semibold py-2 px-4 rounded-full transition"
+              className="bg-[#9F8383]/80 00 text-2xl text-white hover:bg-[#9F8383] font-semibold py-2 px-4 rounded-full transition"
               onClick={onClose}
               aria-label="Go to checkout process"
             >

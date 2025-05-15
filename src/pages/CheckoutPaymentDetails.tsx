@@ -46,7 +46,7 @@ const CheckoutDetails = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto my-20 bg-gray-200 p-2 sm:p-4 rounded-lg">
+    <div className="max-w-2xl mx-auto my-20 bg-white/80 p-2 sm:p-4 rounded-lg">
       <h1 className="text-4xl font-bold ">Checkout Details</h1>
 
       <PersonalInformation
@@ -103,7 +103,7 @@ const CheckoutDetails = () => {
               variant="secondary"
               type="button"
               onClick={() => navigate("/cart")}
-              className="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300"
+              className="bg-gray-300 border-1 border-gray-400 text-center text-gray-800 px-4 py-2 rounded hover:bg-gray-400/60"
             >
               Back to Cart
             </BaseButton>

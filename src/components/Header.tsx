@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import { RiCloseLargeFill } from "react-icons/ri";
-import { assets } from "../assets/assets.ts";
 import BaseButton from "./ui/BaseButton.tsx";
 import { BsHandbag, BsHandbagFill } from "react-icons/bs";
 import CartSidebar from "./CartSidebar.tsx";
@@ -49,7 +48,7 @@ const Header = () => {
               <li className="cursor-pointer">
                 Home
                 <hr
-                  className={`absolute left-0 bottom-0 h-0.5 bg-black transition-all duration-300 ${
+                  className={`absolute left-0 bottom-0 h-0.5 bg-transparent transition-all duration-300 ${
                     isActive ? "w-full" : "w-0 group-hover:w-full"
                   }`}
                 />
@@ -61,7 +60,7 @@ const Header = () => {
               <li className="relative cursor-pointer group">
                 Contact
                 <hr
-                  className={`absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 ${
+                  className={`absolute left-0 bottom-0 w-0 h-0.5 bg-transparent transition-all duration-300 ${
                     isActive ? "w-full" : "group-hover:w-full"
                   } `}
                 />
@@ -90,11 +89,7 @@ const Header = () => {
           </BaseButton>
         </div>
 
-        <BiMenuAltRight
-          size={40}
-          className="mr-4 md:hidden"
-          onClick={toggleMobileMenu}
-        />
+        <BiMenuAltRight size={40} className="mr-4 md:hidden" onClick={toggleMobileMenu} />
 
         {mobileMenu && (
           <div className="md:hidden text-black fixed w-full top-0 bottom-0 z-40 overflow-hidden bg-white transition-all flex flex-col">
