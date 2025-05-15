@@ -33,13 +33,13 @@ const Header = () => {
   }, [mobileMenu]);
 
   return (
-    <div className="bg-pink-200">
-      <nav className="sticky top-0 z-50 h-[60px] flex items-center justify-between bg-secondary  max-w-6xl mx-auto">
+    <header className="bg-[#574964] text-white p-2 sticky top-0 left-0 right-0 z-50">
+      <nav className="h-[60px] flex items-center justify-between bg-secondary max-w-6xl mx-auto">
         <div>
           <img
             onClick={() => navigate("/")}
-            className="mx-2 w-45 cursor-pointer"
-            src={assets.logo_online_shop}
+            className="mx-2 w-24 cursor-pointer"
+            src="/online-shopping.png"
             alt="Online-Shop logo"
           />
         </div>
@@ -90,10 +90,14 @@ const Header = () => {
           </BaseButton>
         </div>
 
-        <BiMenuAltRight size={40} className="mr-4 md:hidden" onClick={toggleMobileMenu} />
+        <BiMenuAltRight
+          size={40}
+          className="mr-4 md:hidden"
+          onClick={toggleMobileMenu}
+        />
 
         {mobileMenu && (
-          <div className="md:hidden fixed w-full top-0 bottom-0 z-40 overflow-hidden bg-white transition-all flex flex-col">
+          <div className="md:hidden text-black fixed w-full top-0 bottom-0 z-40 overflow-hidden bg-white transition-all flex flex-col">
             <div className="flex justify-end p-4">
               <RiCloseLargeFill size={40} onClick={toggleMobileMenu} />
             </div>
@@ -104,15 +108,12 @@ const Header = () => {
               <NavLink onClick={() => setMobileMenu(false)} to="/contact">
                 <p className="px-4 py-2 rounded inline-block">CONTACT</p>
               </NavLink>
-              <NavLink onClick={() => setMobileMenu(false)} to="/about">
-                <p className="px-4 py-2 rounded inline-block">ABOUT</p>
-              </NavLink>
             </ul>
           </div>
         )}
       </nav>
       {isCartOpen && <CartSidebar isOpen={isCartOpen} onClose={closeCart} />}
-    </div>
+    </header>
   );
 };
 

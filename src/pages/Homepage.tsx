@@ -45,8 +45,10 @@ const Homepage = () => {
   if (error) return <div className="text-center text-red-500 text-2xl p-10">Error: {error}</div>;
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">Your One-Stop Destination for Online Shopping</h1>
+    <div className="p-6 my-20">
+      <h1 className="text-3xl sm:text-5xl font-bold mb-20 text-center">
+        Your One-Stop Destination for Online Shopping
+      </h1>
 
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 max-w-4xl mx-auto">
         <SearchInput value={searchTerm} onChange={setSearchTerm} />

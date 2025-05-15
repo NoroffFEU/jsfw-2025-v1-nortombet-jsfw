@@ -55,7 +55,7 @@ const BaseButton: React.FC<BaseButtonProps> = ({
 `.trim();
 
   const variantClasses = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500",
+    primary: "bg-[#9F8383]/80 text-white hover:bg-[#9F8383] focus-visible:ring-[#9F8383]",
     secondary: "bg-gray-200 text-gray-900 hover:bg-gray-300 focus-visible:ring-gray-500",
     danger: "bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500",
     ghost: "bg-transparent hover:bg-gray-100/20 focus-visible:ring-gray-500",

@@ -36,7 +36,7 @@ const Contact = () => {
   return (
     <div className="min-h-svh max-w-2xl mx-auto py-12 px-4">
       <h1 className="text-3xl  text-gray-800 mb-6">
-        CONTACT <span className="font-bold text-indigo-400">US</span>{" "}
+        CONTACT <span className="font-bold text-[#574964]">US</span>{" "}
       </h1>
 
       <p className="text-gray-600 mb-8">

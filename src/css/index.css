@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+body {
+  @apply bg-linear-0 from-[#C8AAAA] to-[#FFDAB3];
+}

@@ -9,11 +9,13 @@ import CheckoutLayout from "./components/layout/CheckoutLayout";
 import CartOverview from "./pages/CheckoutOverview";
 import CheckoutDetails from "./pages/CheckoutPaymentDetails";
 import CheckoutSuccess from "./pages/CheckoutSuccess";
+import ScrollToTop from "./utility/ScrollToTop";
 
 function App() {
   return (
     <>
       <Header />
+      <ScrollToTop />
       <ToastContainer closeOnClick style={{ top: "80px" }} />
       <Routes>
         <Route path="/" element={<Homepage />} />

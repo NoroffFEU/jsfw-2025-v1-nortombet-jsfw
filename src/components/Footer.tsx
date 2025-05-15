@@ -1,13 +1,12 @@
-import { assets } from "../assets/assets.ts";
 import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-slate-200 py-2 shadow-black shadow-md">
+    <footer className="bg-[#574964] text-white py-2 shadow-black shadow-md">
       <div className="md:mx-10 mx-4 sm:mx-[10%]">
         <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] max-w-6xl mx-auto gap-14 my-10 mt-10 text-base text-text">
           <div>
-            <img className="mb-5 w-40" src={assets.logo_online_shop} alt="Online-Shop Logo" />
+            <img className="mb-5 w-40" src="/online-shopping.png" alt="Online-Shop Logo" />
             <p className="w-full md:w2/3 leading-6">
               Welcome to our store! We're an online shop dedicated to bring you quality products.
             </p>
@@ -42,7 +41,7 @@ const Footer = () => {
           <p className="py-5 text-sm text-center">Copyright 2025 @ Online-Shop - All Rights Reserved.</p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

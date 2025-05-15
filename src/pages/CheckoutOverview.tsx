@@ -80,7 +80,7 @@ const CartOverview = () => {
             <BaseButton
               variant="primary"
               onClick={() => navigate("/checkout/details")}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              className="text-white px-4 py-2 rounded"
               disabled={items.length === 0}
             >
               Proceed to Checkout
