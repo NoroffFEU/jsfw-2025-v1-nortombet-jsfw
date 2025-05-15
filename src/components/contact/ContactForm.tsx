@@ -1,8 +1,15 @@
 import { useState, FormEvent } from "react";
-import { ContactFormProps, ContactFormData, FormErrors } from "../../types/contactTypes";
+import {
+  ContactFormProps,
+  ContactFormData,
+  FormErrors,
+} from "../../types/contactTypes";
 import BaseButton from "../../components/ui/BaseButton";
 
-export const ContactForm = ({ onSubmit, onValidationError }: ContactFormProps) => {
+export const ContactForm = ({
+  onSubmit,
+  onValidationError,
+}: ContactFormProps) => {
   const [formData, setFormData] = useState<ContactFormData>({
     fullName: "",
     subject: "",
@@ -41,7 +48,9 @@ export const ContactForm = ({ onSubmit, onValidationError }: ContactFormProps) =
     return isValid;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -75,7 +84,10 @@ export const ContactForm = ({ onSubmit, onValidationError }: ContactFormProps) =
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">
+        <label
+          htmlFor="fullName"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
           Full Name*
         </label>
         <input
@@ -88,11 +100,16 @@ export const ContactForm = ({ onSubmit, onValidationError }: ContactFormProps) =
             errors.fullName ? "border-red-500" : "border-gray-300"
           }`}
         />
-        {errors.fullName && <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>}
+        {errors.fullName && (
+          <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>
+        )}
       </div>
 
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+        <label
+          htmlFor="subject"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
           Subject*
         </label>
         <input
@@ -105,11 +122,16 @@ export const ContactForm = ({ onSubmit, onValidationError }: ContactFormProps) =
             errors.subject ? "border-red-500" : "border-gray-300"
           }`}
         />
-        {errors.subject && <p className="mt-1 text-sm text-red-600">{errors.subject}</p>}
+        {errors.subject && (
+          <p className="mt-1 text-sm text-red-600">{errors.subject}</p>
+        )}
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
           Email*
         </label>
         <input
@@ -122,11 +144,16 @@ export const ContactForm = ({ onSubmit, onValidationError }: ContactFormProps) =
             errors.email ? "border-red-500" : "border-gray-300"
           }`}
         />
-        {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+        {errors.email && (
+          <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+        )}
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+        <label
+          htmlFor="message"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
           Message*
         </label>
         <textarea
@@ -139,13 +166,15 @@ export const ContactForm = ({ onSubmit, onValidationError }: ContactFormProps) =
             errors.message ? "border-red-500" : "border-gray-300"
           }`}
         />
-        {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
+        {errors.message && (
+          <p className="mt-1 text-sm text-red-600">{errors.message}</p>
+        )}
       </div>
 
       <div>
         <BaseButton
           type="submit"
-          className="w-full cursor-pointer  text-black py-2 px-4 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+          className="w-full cursor-pointer bg-[#574964] text-black py-2 px-4 rounded-md  focus:outline-none transition-colors"
         >
           Send Message
         </BaseButton>
