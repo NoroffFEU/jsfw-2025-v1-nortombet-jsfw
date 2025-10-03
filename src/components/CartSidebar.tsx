@@ -55,7 +55,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onClick={onClose}
-      ></div>
+      />
 
       <div
         className={`fixed top-0 right-0 h-full w-full max-w-lg 2xl:max-w-3xl bg-white shadow-2xl z-50 transform transition-transform ${
@@ -84,7 +84,9 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
             </BaseButton>
           </div>
 
-          <h2 className="text-lg text-black font-semibold mb-2">Shopping Cart</h2>
+          <h2 className="text-lg text-black font-semibold mb-2">
+            Shopping Cart
+          </h2>
 
           {isConfirmClear && (
             <div className="absolute top-0 left-0 w-full bg-black/70 text-white p-4 text-center">
@@ -112,7 +114,9 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
 
           <section className="flex-1 overflow-y-auto space-y-3">
             {items.length === 0 ? (
-              <p className="w-full text-black border border-gray-400 rounded text-center py-16">Your cart is empty.</p>
+              <p className="w-full text-black border border-gray-400 rounded text-center py-16">
+                Your cart is empty.
+              </p>
             ) : (
               items.map((item) => (
                 <CartItemCard
@@ -127,7 +131,9 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
           </section>
 
           <section className="mt-4 pt-4 border-t flex flex-col sm:flex-row justify-between items-center gap-2 pb-8 border-t-gray-400">
-            <h2 className="font-bold text-xl text-black">Total: ${totalPrice.toFixed(2)}</h2>
+            <h2 className="font-bold text-xl text-black">
+              Total: ${totalPrice.toFixed(2)}
+            </h2>
             <Link
               to="/cart"
               className="bg-[#9F8383]/80 00 text-2xl text-white hover:bg-[#9F8383] font-semibold py-2 px-4 rounded-full transition"
