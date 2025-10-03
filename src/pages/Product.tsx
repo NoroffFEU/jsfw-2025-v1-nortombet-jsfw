@@ -5,9 +5,9 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useProduct } from "../hooks/useProduct";
 import StarRating from "../components/product/StarRating";
 import BaseButton from "../components/ui/BaseButton";
-import { useCart } from "../context/cart/CartContext";
 import { toast } from "react-toastify";
 import SinglePageSkeleton from "../components/skeletons/SinglePageSkeleton";
+import { useCart } from "../context/cart/CartContext";
 
 const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();

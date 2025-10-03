@@ -3,10 +3,10 @@ import { FaX } from "react-icons/fa6";
 import { FaTrashAlt } from "react-icons/fa";
 import { CartSidebarProps } from "../types/cartTypes";
 import BaseButton from "./ui/BaseButton";
-import { useCart } from "../context/cart/CartContext";
 import CartItemCard from "./product/CartItemCard";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { useCart } from "../context/cart/CartContext";
 
 const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
   const { items, totalPrice, clearCart, updateAmount, removeItem } = useCart();
@@ -84,9 +84,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
             </BaseButton>
           </div>
 
-          <h2 className="text-lg text-black font-semibold mb-2">
-            Shopping Cart
-          </h2>
+          <h2 className="text-lg text-black font-semibold mb-2">Shopping Cart</h2>
 
           {isConfirmClear && (
             <div className="absolute top-0 left-0 w-full bg-black/70 text-white p-4 text-center">
@@ -114,9 +112,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
 
           <section className="flex-1 overflow-y-auto space-y-3">
             {items.length === 0 ? (
-              <p className="w-full text-black border border-gray-400 rounded text-center py-16">
-                Your cart is empty.
-              </p>
+              <p className="w-full text-black border border-gray-400 rounded text-center py-16">Your cart is empty.</p>
             ) : (
               items.map((item) => (
                 <CartItemCard
@@ -131,9 +127,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
           </section>
 
           <section className="mt-4 pt-4 border-t flex flex-col sm:flex-row justify-between items-center gap-2 pb-8 border-t-gray-400">
-            <h2 className="font-bold text-xl text-black">
-              Total: ${totalPrice.toFixed(2)}
-            </h2>
+            <h2 className="font-bold text-xl text-black">Total: ${totalPrice.toFixed(2)}</h2>
             <Link
               to="/cart"
               className="bg-[#9F8383]/80 00 text-2xl text-white hover:bg-[#9F8383] font-semibold py-2 px-4 rounded-full transition"

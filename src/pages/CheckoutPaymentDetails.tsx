@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import BaseButton from "../components/ui/BaseButton";
-import { useCart } from "../context/cart/CartContext";
 import PersonalInformation from "../components/checkout/PersonalInformation";
 import CCInformation from "../components/checkout/CCInformation";
+import { useCart } from "../context/cart/CartContext";
 
 interface PersonalInformation {
   fullName: string;
@@ -24,7 +24,7 @@ const CheckoutDetails = () => {
   const { items, totalPrice, totalSaved } = useCart();
   const totalCostBeforeReduction = (totalPrice + totalSaved).toFixed(2);
   const navigate = useNavigate();
-  const ccInfoRef = useRef<any>(null);
+  const ccInfoRef = useRef<unknown>(null);
 
   useEffect(() => {
     document.title = "Online Shop | Cart Payment";

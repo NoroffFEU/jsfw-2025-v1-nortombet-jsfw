@@ -1,15 +1,14 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { addItemToCart, updateItemAmount, removeItemFromCart, clearCartItems } from "./cartActions";
+import React, { useEffect, useMemo, useState } from "react";
+import {
+  addItemToCart,
+  updateItemAmount,
+  removeItemFromCart,
+  clearCartItems,
+  getCartFromLocalStorage,
+} from "./cartActions";
+import { CartItem } from "../../types/cartTypes";
+import { CartContext } from "./CartContext";
 import { useCartSync } from "./useCartSync";
-import { CartContextType, CartItem } from "../../types/cartTypes";
-
-/**
- * React context that holds cart state and actions for managing a shopping cart.
- *
- * Use `useCart()` to consume the context within components that are wrapped by `CartProvider`.
- * The context includes cart items, total item count, total price, and manipulation methods.
- */
-export const CartContext = createContext<CartContextType | undefined>(undefined);
 
 /**
  * React provider component that encapsulates and shares cart state across the application.
@@ -29,23 +28,22 @@ export const CartContext = createContext<CartContextType | undefined>(undefined)
  * @returns {JSX.Element} A React context provider component
  */
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [items, setItems] = useState<CartItem[]>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("cart");
-      return saved ? JSON.parse(saved) : [];
-    }
-    return [];
-  });
-
-  const totalItems = items.reduce((sum, item) => sum + item.amount, 0);
-  const totalPrice = items.reduce((sum, item) => sum + (item.discountedPrice || item.price) * item.amount, 0);
-
-  const totalSaved = items.reduce((acc, item) => {
-    if (item.discountedPrice && item.discountedPrice < item.price) {
-      return acc + (item.price - item.discountedPrice) * item.amount;
-    }
-    return acc;
-  }, 0);
+  const [items, setItems] = useState<CartItem[]>(() => getCartFromLocalStorage());
+  const totalItems = useMemo(() => items.reduce((sum, item) => sum + item.amount, 0), [items]);
+  const totalPrice = useMemo(
+    () => items.reduce((sum, item) => sum + (item.discountedPrice || item.price) * item.amount, 0),
+    [items]
+  );
+  const totalSaved = useMemo(
+    () =>
+      items.reduce((acc, item) => {
+        if (item.discountedPrice && item.discountedPrice < item.price) {
+          return acc + (item.price - item.discountedPrice) * item.amount;
+        }
+        return acc;
+      }, 0),
+    [items]
+  );
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(items));
@@ -111,30 +109,4 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       {children}
     </CartContext.Provider>
   );
-};
-
-/**
- * Custom React hook to consume the cart context.
- *
- * Must be used within a component wrapped in `CartProvider`.
- * Returns the current state of the cart and functions to interact with it.
- *
- * @example
- * const {
- * items            // The list of items in the cart.
- * addItem          // Function to add an item to the cart.
- * updateAmount     // Function to update the quantity of an item.
- * removeItem       // Function to remove an item from the cart.
- * clearCart        // Function to clear all items from the cart.
- * totalItems       // The total count of items in the cart.
- * totalPrice       // The total price of all items in the cart.
- *  } = useCart();
- *
- * @throws {Error} If used outside of a `CartProvider`
- * @returns {CartContextType} An object containing cart state and manipulation methods
- */
-export const useCart = () => {
-  const context = useContext(CartContext);
-  if (!context) throw new Error("useCart must be used within CartProvider");
-  return context;
 };

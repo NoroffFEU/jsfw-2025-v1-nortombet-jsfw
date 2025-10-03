@@ -5,7 +5,7 @@ import { RiCloseLargeFill } from "react-icons/ri";
 import BaseButton from "./ui/BaseButton.tsx";
 import { BsHandbag, BsHandbagFill } from "react-icons/bs";
 import CartSidebar from "./CartSidebar.tsx";
-import { useCart } from "../context/cart/CartContext.tsx";
+import { useCart } from "../context/cart/CartContext.ts";
 
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -89,11 +89,7 @@ const Header = () => {
           </BaseButton>
         </div>
 
-        <BiMenuAltRight
-          size={40}
-          className="mr-4 md:hidden"
-          onClick={toggleMobileMenu}
-        />
+        <BiMenuAltRight size={40} className="mr-4 md:hidden" onClick={toggleMobileMenu} />
 
         {mobileMenu && (
           <div className="md:hidden text-black fixed w-full top-0 bottom-0 z-40 overflow-hidden bg-[#FDD8B3] transition-all flex flex-col">

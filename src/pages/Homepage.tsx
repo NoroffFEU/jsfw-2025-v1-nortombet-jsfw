@@ -26,8 +26,12 @@ const Homepage = () => {
           const data = await fetchProducts();
           setProducts(data);
           setFilteredProducts(data);
-        } catch (err: any) {
-          setError(err.message || "Error loading products");
+        } catch (err: unknown) {
+          if (err instanceof Error) {
+            setError(err.message);
+          } else {
+            setError("Error loading products");
+          }
         } finally {
           setLoading(false);
         }

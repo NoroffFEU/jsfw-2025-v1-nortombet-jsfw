@@ -15,7 +15,7 @@ const CheckoutSuccess = () => {
 
   useEffect(() => {
     clearCart();
-  }, [orderNumber]);
+  }, [orderNumber, clearCart]);
 
   return (
     <>

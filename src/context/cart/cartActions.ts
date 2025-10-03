@@ -6,7 +6,7 @@ import { CartItem } from "../../types/cartTypes";
  * @param {*} data - The parsed data from localStorage.
  * @returns {boolean} True if data is a valid CartItem[], false otherwise.
  */
-function isCartItemArray(data: any): data is CartItem[] {
+function isCartItemArray(data: unknown): data is CartItem[] {
   return (
     Array.isArray(data) &&
     data.every(
