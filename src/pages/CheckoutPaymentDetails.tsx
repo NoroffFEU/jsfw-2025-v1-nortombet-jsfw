@@ -13,6 +13,14 @@ interface PersonalInformation {
   country: string;
 }
 
+/**
+ * CheckoutDetails page component.
+ * Displays personal information, credit card form, order summary, and total pricing.
+ * Handles form submission for completing a purchase and navigates to the success page.
+ *
+ * @component
+ * @returns {JSX.Element} Checkout details page
+ */
 const CheckoutDetails = () => {
   const [isCCValid, setIsCCValid] = useState(true);
   const [personalFormData] = useState({
@@ -37,9 +45,18 @@ const CheckoutDetails = () => {
     }
   }, [items, navigate]);
 
+  /**
+   * Handles form submission, generates an order number,
+   * saves checkout completion in sessionStorage,
+   * navigates to the success page, and shows a toast notification.
+   *
+   * @param {React.FormEvent} e - Form submission event
+   */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const orderNumber = Math.floor(100000000000 + Math.random() * 900000000000).toString();
+    const orderNumber = Math.floor(
+      100000000000 + Math.random() * 900000000000
+    ).toString();
     sessionStorage.setItem("checkoutCompleted", "true");
     navigate(`/checkout/success/${orderNumber}`);
     toast.success(`Purchase completed. Order ${orderNumber}`);
@@ -68,7 +85,12 @@ const CheckoutDetails = () => {
                 <span>
                   {item.name} × {item.amount}
                 </span>
-                <span>${((item.discountedPrice ?? item.price) * item.amount).toFixed(2)}</span>
+                <span>
+                  $
+                  {((item.discountedPrice ?? item.price) * item.amount).toFixed(
+                    2
+                  )}
+                </span>
               </div>
             ))}
           </div>
@@ -76,7 +98,11 @@ const CheckoutDetails = () => {
           <section className="border-t pt-3">
             <dl className="flex justify-between font-semibold text-lg">
               <dt>Items total:</dt>
-              <dd className={` text-gray-700 ${totalSaved > 0 && "line-through"}`}>${totalCostBeforeReduction}</dd>
+              <dd
+                className={` text-gray-700 ${totalSaved > 0 && "line-through"}`}
+              >
+                ${totalCostBeforeReduction}
+              </dd>
             </dl>
           </section>
 

@@ -5,6 +5,12 @@ interface Person {
   country: string;
 }
 
+/**
+ * Displays a person's shipping address.
+ *
+ * @param {Person} props - The personal information to display
+ * @returns {JSX.Element} JSX for the shipping address
+ */
 const PersonalInformation = ({ fullName, address, city, country }: Person) => {
   return (
     <div className="border-1 rounded p-4 my-4 bg-yellow-50">
