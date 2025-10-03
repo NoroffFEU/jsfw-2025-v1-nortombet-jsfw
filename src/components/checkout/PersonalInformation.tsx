@@ -5,14 +5,14 @@ interface Person {
   country: string;
 }
 
-const PersonalInformation = (props: Person) => {
+const PersonalInformation = ({ fullName, address, city, country }: Person) => {
   return (
     <div className="border-1 rounded p-4 my-4 bg-yellow-50">
       <p className="font-semibold text-lg">Shipping address:</p>
-      <p>{props.fullName}</p>
-      <p>{props.address},</p>
+      <p>{fullName}</p>
+      <p>{address},</p>
       <p>
-        {props.city} {props.country}
+        {city} {country}
       </p>
     </div>
   );

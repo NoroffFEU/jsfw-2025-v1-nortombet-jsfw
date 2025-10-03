@@ -5,7 +5,10 @@ interface ExpiryDateInputProps {
   currentExpiry?: string;
 }
 
-const ExpiryDateInput = ({ onExpiryChange, currentExpiry = "" }: ExpiryDateInputProps) => {
+const ExpiryDateInput = ({
+  onExpiryChange,
+  currentExpiry = "",
+}: ExpiryDateInputProps) => {
   const [month, setMonth] = useState<string>("");
   const [year, setYear] = useState<string>("");
 
@@ -14,7 +17,9 @@ const ExpiryDateInput = ({ onExpiryChange, currentExpiry = "" }: ExpiryDateInput
 
   useEffect(() => {
     if (currentExpiry) {
-      const [currentMonth, currentYear] = currentExpiry.split("/").map((val) => val.trim());
+      const [currentMonth, currentYear] = currentExpiry
+        .split("/")
+        .map((val) => val.trim());
       setMonth(currentMonth);
       setYear(currentYear);
     }
@@ -33,11 +38,16 @@ const ExpiryDateInput = ({ onExpiryChange, currentExpiry = "" }: ExpiryDateInput
   };
 
   const isValidExpiry = (expiry: string): boolean => {
-    const [expiryMonth, expiryYear] = expiry.split("/").map((val) => parseInt(val.trim(), 10));
+    const [expiryMonth, expiryYear] = expiry
+      .split("/")
+      .map((val) => parseInt(val.trim(), 10));
     const currentMonth = new Date().getMonth() + 1;
     const currentYear = new Date().getFullYear() % 100;
 
-    if (expiryYear < currentYear || (expiryYear === currentYear && expiryMonth < currentMonth)) {
+    if (
+      expiryYear < currentYear ||
+      (expiryYear === currentYear && expiryMonth < currentMonth)
+    ) {
       return false;
     }
     return true;
@@ -54,11 +64,14 @@ const ExpiryDateInput = ({ onExpiryChange, currentExpiry = "" }: ExpiryDateInput
           aria-label="Select month of expiry date for credit card"
         >
           <option value="">MM</option>
-          {[...Array(12)].map((_, index) => (
-            <option key={index} value={(index + 1).toString().padStart(2, "0")}>
-              {(index + 1).toString().padStart(2, "0")}
-            </option>
-          ))}
+          {[...Array(12)].map((_, index) => {
+            const monthValue = (index + 1).toString().padStart(2, "0");
+            return (
+              <option key={monthValue} value={monthValue}>
+                {monthValue}
+              </option>
+            );
+          })}
         </select>
 
         <span className="text-xl">/</span>
@@ -66,20 +79,25 @@ const ExpiryDateInput = ({ onExpiryChange, currentExpiry = "" }: ExpiryDateInput
         <select
           value={year}
           onChange={handleYearChange}
-          className="w-16  sm:w-20 p-1 border rounded transition-all duration-700 bg-gray-50"
+          className="w-16 sm:w-20 p-1 border rounded transition-all duration-700 bg-gray-50"
           aria-label="Select year of expiry date for credit card"
         >
           <option value="">YY</option>
-          {years.map((yearValue) => (
-            <option key={yearValue} value={yearValue.toString().slice(-2)}>
-              {yearValue.toString().slice(-2)}
-            </option>
-          ))}
+          {years.map((yearValue) => {
+            const yearShort = yearValue.toString().slice(-2);
+            return (
+              <option key={yearValue} value={yearShort}>
+                {yearShort}
+              </option>
+            );
+          })}
         </select>
       </div>
 
       {!isValidExpiry(`${month}/${year}`) && month && year && (
-        <p className="text-red-500 text-sm mt-2">This expiry date is in the past</p>
+        <p className="text-red-500 text-sm mt-2">
+          This expiry date is in the past
+        </p>
       )}
     </div>
   );
