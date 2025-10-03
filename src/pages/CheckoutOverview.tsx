@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import BaseButton from "../components/ui/BaseButton";
-import { useCart } from "../context/cart/CartContext";
 import { useEffect } from "react";
+import { useCart } from "../context/cart/CartContext";
 
 const CartOverview = () => {
   const { items, removeItem, totalPrice, totalSaved } = useCart();

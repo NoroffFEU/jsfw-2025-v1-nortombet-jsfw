@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useMemo, forwardRef, useImperativeHandle } from "react";
+import { useEffect, useState, useRef, useMemo, forwardRef, useImperativeHandle, useCallback } from "react";
 import { isCardNumberValid, isExpiryValid, isCVVValid } from "../../utility/validateCCInformation";
 import ExpiryDateInput from "./CCExpiryDateInputs";
 
@@ -51,7 +51,7 @@ const CCInformation = forwardRef(({ onValidationChange }: CCInformationProps, re
     [cardNumber]
   );
 
-  const validateForm = () => {
+  const validateForm = useCallback(() => {
     const newErrors = {
       number: "",
       name: "",
@@ -86,13 +86,13 @@ const CCInformation = forwardRef(({ onValidationChange }: CCInformationProps, re
     }
 
     return { newErrors, isValid };
-  };
+  }, [cardNumber, cardName, expiry, cvv]);
 
   useEffect(() => {
     const { newErrors, isValid } = validateForm();
     setErrors(newErrors);
     onValidationChange(isValid);
-  }, [cardNumber, cardName, expiry, cvv]);
+  }, [validateForm, onValidationChange]);
 
   useImperativeHandle(ref, () => ({
     fillCardInfo: (data: { cardNumber?: string; cardName?: string; expiry?: string; cvv?: string }) => {
