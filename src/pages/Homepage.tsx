@@ -71,10 +71,23 @@ const Homepage = () => {
         Your One-Stop Destination for Online Shopping
       </h1>
 
-      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 max-w-4xl mx-auto">
-        <SearchInput value={searchTerm} onChange={setSearchTerm} />
-        <SortDropdown onSortChange={setSortOption} />
-      </div>
+      {loading || error ? (
+        <div className=" w-full flex  max-w-4xl mx-auto animate-pulse mb-6 gap-4">
+          <div className="w-full h-[50px] bg-gray-200 rounded-md" />
+          <div className="w-full flex gap-4">
+            <div className="w-full max-w-16 h-[50px] bg-gray-200 rounded-md" />
+            <div className="w-full h-[50px] bg-gray-200 rounded-md" />
+          </div>
+        </div>
+      ) : (
+        <>
+          {" "}
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 max-w-4xl mx-auto">
+            <SearchInput value={searchTerm} onChange={setSearchTerm} />
+            <SortDropdown onSortChange={setSortOption} />
+          </div>
+        </>
+      )}
 
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -88,6 +101,13 @@ const Homepage = () => {
             Sorry, no products found matching "{searchTerm}"
           </p>
           <p className="text-gray-500">Please try a different search term</p>
+          <button
+            type="button"
+            onClick={() => setSearchTerm("")}
+            className="bg-[#9F8383]/80 00 text-2xl text-white hover:bg-[#9F8383] font-semibold py-2 px-4 rounded-full transition"
+          >
+            Reset search
+          </button>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
