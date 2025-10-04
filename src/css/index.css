@@ -1,12 +1,9 @@
 @import "tailwindcss";
 
-html, body {
+body {
   @apply h-full m-0;
 }
 
 body {
   @apply bg-linear-0 from-[#C8AAAA] to-[#FFDAB3];
 }
-
-
-

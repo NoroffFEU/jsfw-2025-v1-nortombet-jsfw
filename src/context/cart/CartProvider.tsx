@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   addItemToCart,
   updateItemAmount,
@@ -55,10 +55,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
    * @param {CartItem} newItem - The item to be added or updated.
    * @returns {void}
    */
-  const addItem = (newItem: CartItem): void => {
+  const addItem = useCallback((newItem: CartItem): void => {
     setItems((prev) => addItemToCart(prev, newItem));
-  };
-
+  }, []);
   /**
    * Updates the quantity of an item in the cart.
    *
@@ -66,29 +65,28 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
    * @param {number} amount - The new quantity for the item.
    * @returns {void}
    */
-  const updateAmount = (id: string, amount: number): void => {
+  const updateAmount = useCallback((id: string, amount: number): void => {
     setItems((prev) => updateItemAmount(prev, id, amount));
-  };
-
+  }, []);
   /**
    * Removes an item from the cart.
    *
    * @param {string} id - The ID of the item to remove.
    * @returns {void}
    */
-  const removeItem = (id: string): void => {
+  const removeItem = useCallback((id: string): void => {
     setItems((prev) => removeItemFromCart(prev, id));
-  };
+  }, []);
 
   /**
    * Clears all items from the cart and removes data from localStorage.
    *
    * @returns {void}
    */
-  const clearCart = (): void => {
+  const clearCart = useCallback((): void => {
     setItems(clearCartItems());
     localStorage.removeItem("cart");
-  };
+  }, []);
 
   /**
    * Checks if an item with a given ID exists in the cart.
@@ -96,9 +94,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
    * @param {string} id - The ID of the item to check.
    * @returns {boolean} True if the item exists in the cart, false otherwise.
    */
-  const hasItem = (id: string): boolean => {
-    return items.some((item) => item.id === id);
-  };
+  const hasItem = useCallback(
+    (id: string): boolean => {
+      return items.some((item) => item.id === id);
+    },
+    [items]
+  );
 
   useCartSync(setItems);
 
