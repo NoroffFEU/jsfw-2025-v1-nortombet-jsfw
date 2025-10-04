@@ -1,15 +1,26 @@
 import { Link } from "react-router-dom";
 
 type ProgressStep = {
+  /** Name of the step displayed below the circle */
   name: string;
+  /** Path to navigate to when the step is clickable */
   path: string;
 };
 
 type ProgressBarProps = {
+  /** Array of steps in the progress bar */
   steps: ProgressStep[];
+  /** Index of the current active step (0-based) */
   currentStep: number;
 };
 
+/**
+ * A progress bar component that displays a series of steps with circles and connecting lines.
+ * Each step is clickable if it has been completed (i.e., index < currentStep).
+ *
+ * @param {ProgressBarProps} props - Props including the steps and current active step
+ * @returns {JSX.Element} The rendered progress bar
+ */
 const ProgressBar = ({ steps, currentStep }: ProgressBarProps) => {
   return (
     <div className="flex flex-col items-center mb-8">

@@ -4,6 +4,12 @@ import BaseButton from "../components/ui/BaseButton";
 import { useEffect } from "react";
 import { useCart } from "../context/cart/CartContext";
 
+/**
+ * Displays an overview of the shopping cart, including item list, pricing, discounts, and checkout options.
+ *
+ * @component
+ * @returns {JSX.Element} Cart overview page with items, totals, and navigation to checkout or continue shopping
+ */
 const CartOverview = () => {
   const { items, removeItem, totalPrice, totalSaved } = useCart();
   const navigate = useNavigate();
@@ -20,15 +26,21 @@ const CartOverview = () => {
       {items.length === 0 ? (
         <div className="text-center py-8">
           <p className="mb-4">Your cart is empty.</p>
-          <Link to="/" className="inline-block bg-[#9F8383]/80 text-white hover:bg-[#9F8383]  px-4 py-2 rounded">
+          <Link
+            to="/"
+            className="inline-block bg-[#9F8383]/80 text-white hover:bg-[#9F8383] px-4 py-2 rounded"
+          >
             Back to Shopping
           </Link>
         </div>
       ) : (
         <div>
-          <div className="space-y-3 mb-4 ">
+          <div className="space-y-3 mb-4">
             {items.map((item) => (
-              <article key={item.id} className="flex justify-between gap-2 items-center pb-2 bg-gray-50 p-1 rounded">
+              <article
+                key={item.id}
+                className="flex justify-between gap-2 items-center pb-2 bg-gray-50 p-1 rounded"
+              >
                 <div className="flex-1">
                   <h2>
                     {item.name} × {item.amount}
@@ -36,7 +48,10 @@ const CartOverview = () => {
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="font-medium">
-                    ${((item.discountedPrice || item.price) * item.amount).toFixed(2)}
+                    $
+                    {(
+                      (item.discountedPrice || item.price) * item.amount
+                    ).toFixed(2)}
                   </span>
                   <BaseButton
                     variant="danger"
@@ -50,12 +65,18 @@ const CartOverview = () => {
               </article>
             ))}
           </div>
+
           <section className="border-t pt-3">
             <dl className="flex justify-between font-bold text-lg">
               <dt>Items total:</dt>
-              <dd className={`text-gray-600 ${totalSaved > 0 && "line-through"} `}>${totalCostBeforeReduction}</dd>
+              <dd
+                className={`text-gray-600 ${totalSaved > 0 && "line-through"}`}
+              >
+                ${totalCostBeforeReduction}
+              </dd>
             </dl>
           </section>
+
           <section className="mb-6">
             <dl className="flex justify-between font-bold text-lg">
               <dt>Items discount:</dt>
@@ -66,6 +87,7 @@ const CartOverview = () => {
               )}
             </dl>
           </section>
+
           <section className="border-t pt-3 mb-6">
             <dl className="flex justify-between font-bold text-2xl">
               <dt>Total:</dt>

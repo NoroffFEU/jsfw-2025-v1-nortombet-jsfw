@@ -3,6 +3,14 @@ import { useEffect } from "react";
 import { useOneTimeAccess } from "../hooks/useOneTimeAccess";
 import { useCart } from "../context/cart/CartContext";
 
+/**
+ * CheckoutSuccess page component.
+ * Displays confirmation of a successful order including order number,
+ * clears the cart, and restricts access to one-time viewing.
+ *
+ * @component
+ * @returns {JSX.Element} Checkout success page
+ */
 const CheckoutSuccess = () => {
   const { clearCart } = useCart();
   const { orderNumber } = useParams();
@@ -11,8 +19,10 @@ const CheckoutSuccess = () => {
     document.title = "Online Shop | Cart Successful";
   }, []);
 
+  // Prevent direct access; only allow via checkout flow
   useOneTimeAccess("/");
 
+  // Clear the cart once the page loads
   useEffect(() => {
     clearCart();
   }, [orderNumber, clearCart]);
@@ -30,9 +40,14 @@ const CheckoutSuccess = () => {
           <p className="text-2xl font-bold">{orderNumber}</p>
         </div>
 
-        <p className="mb-6">A confirmation email has been sent to your registered email address.</p>
+        <p className="mb-6">
+          A confirmation email has been sent to your registered email address.
+        </p>
 
-        <Link to="/" className="bg-[#9F8383]/80 text-white hover:bg-[#9F8383] px-4 py-2 rounded  place-self-center">
+        <Link
+          to="/"
+          className="bg-[#9F8383]/80 text-white hover:bg-[#9F8383] px-4 py-2 rounded  place-self-center"
+        >
           Continue Shopping
         </Link>
       </div>

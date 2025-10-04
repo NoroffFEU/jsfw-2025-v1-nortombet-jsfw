@@ -1,5 +1,11 @@
 import React from "react";
 
+/**
+ * Skeleton placeholder component for a single product page.
+ * Displays loading placeholders for image, title, rating, price, description, tags, quantity, and buttons.
+ *
+ * @returns {JSX.Element} The single product page skeleton placeholder
+ */
 const SinglePageSkeleton: React.FC = () => {
   return (
     <div className="container mx-auto min-h-svh max-w-5xl my-30 p-4 bg-linear-180 from-white/55 to-transparent rounded-lg animate-pulse">

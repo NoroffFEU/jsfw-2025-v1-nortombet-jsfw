@@ -4,7 +4,18 @@ import { ContactFormData } from "../types/contactTypes";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+/**
+ * Contact page component.
+ * Renders a contact form and handles form submission and validation.
+ *
+ * @component
+ * @returns {JSX.Element} Contact page
+ */
 const Contact = () => {
+  /**
+   * Handles successful form submission.
+   * @param {ContactFormData} formData - The submitted form data.
+   */
   const handleSubmit = (formData: ContactFormData) => {
     console.log("Form submitted:", formData);
 
@@ -22,6 +33,9 @@ const Contact = () => {
     document.title = "Online Shop | Contact";
   }, []);
 
+  /**
+   * Handles form validation errors.
+   */
   const handleValidationError = () => {
     toast.error(`Please fix the errors in the form.`, {
       position: "top-right",
@@ -40,11 +54,15 @@ const Contact = () => {
       </h1>
 
       <p className="text-gray-600 mb-8">
-        Have questions about your order or our products? We're here to help! Fill out the form below and the our team
-        will get back to you as soon as possible.
+        Have questions about your order or our products? We're here to help!
+        Fill out the form below and our team will get back to you as soon as
+        possible.
       </p>
 
-      <ContactForm onSubmit={handleSubmit} onValidationError={handleValidationError} />
+      <ContactForm
+        onSubmit={handleSubmit}
+        onValidationError={handleValidationError}
+      />
     </div>
   );
 };

@@ -1,20 +1,34 @@
 import { useState, useEffect } from "react";
 
 interface ExpiryDateInputProps {
+  /** Callback function triggered whenever the expiry date changes. Returns the expiry in "MM/YY" format */
   onExpiryChange: (expiry: string) => void;
+  /** Optional current expiry date in "MM/YY" format to initialize the component */
   currentExpiry?: string;
 }
 
+/**
+ * A React component for selecting credit card expiry dates (month and year).
+ *
+ * @param {ExpiryDateInputProps} props - Props for the component
+ * @returns JSX.Element
+ */
 const ExpiryDateInput = ({
   onExpiryChange,
   currentExpiry = "",
 }: ExpiryDateInputProps) => {
+  /** Selected month in "MM" format */
   const [month, setMonth] = useState<string>("");
+  /** Selected year in "YY" format */
   const [year, setYear] = useState<string>("");
 
+  /** Array of years from current year to next 10 years */
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 11 }, (_, index) => currentYear + index);
 
+  /**
+   * Initialize month and year if a currentExpiry is provided
+   */
   useEffect(() => {
     if (currentExpiry) {
       const [currentMonth, currentYear] = currentExpiry
@@ -25,18 +39,34 @@ const ExpiryDateInput = ({
     }
   }, [currentExpiry]);
 
+  /**
+   * Handles changes to the month select dropdown
+   *
+   * @param {React.ChangeEvent<HTMLSelectElement>} e - Change event from month select
+   */
   const handleMonthChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     setMonth(value);
     onExpiryChange(`${value}/${year}`);
   };
 
+  /**
+   * Handles changes to the year select dropdown
+   *
+   * @param {React.ChangeEvent<HTMLSelectElement>} e - Change event from year select
+   */
   const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     setYear(value);
     onExpiryChange(`${month}/${value}`);
   };
 
+  /**
+   * Validates whether a given expiry date is not in the past
+   *
+   * @param {string} expiry - Expiry date in "MM/YY" format
+   * @returns {boolean} True if expiry date is valid (not in the past), otherwise false
+   */
   const isValidExpiry = (expiry: string): boolean => {
     const [expiryMonth, expiryYear] = expiry
       .split("/")

@@ -8,6 +8,13 @@ export type SortOption =
   | "discountedPrice_asc"
   | "discountedPrice_desc";
 
+/**
+ * Sorts an array of products based on the specified sort option.
+ *
+ * @param {Product[]} products - The list of products to sort
+ * @param {SortOption} option - The sorting criteria
+ * @returns {Product[]} A new array of products sorted according to the option
+ */
 export const sortProducts = (
   products: Product[],
   option: SortOption
