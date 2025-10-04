@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { fetchProducts, Product } from "../API/fetchApi";
+import { fetchProducts } from "../API/fetchApi";
 import SearchInput from "../components/product/SearchInput";
 import SortDropdown from "../components/product/SortDropdown";
 import { sortProducts, SortOption } from "../components/product/SortProduct";
 import ItemCard from "../components/product/ItemCard";
 import ProductSkeleton from "../components/skeletons/ProductSkeleton";
+import { Product } from "../types/productTypes";
 
 /**
  * Homepage component.
@@ -51,19 +52,12 @@ const Homepage = () => {
 
   // Filter and sort products based on search term and sort option
   useEffect(() => {
-    let filtered = products.filter((product) =>
-      product.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    let filtered = products.filter((product) => product.title.toLowerCase().includes(searchTerm.toLowerCase()));
     filtered = sortProducts(filtered, sortOption);
     setFilteredProducts(filtered);
   }, [searchTerm, sortOption, products]);
 
-  if (error)
-    return (
-      <div className="text-center text-red-500 text-2xl p-10">
-        Error: {error}
-      </div>
-    );
+  if (error) return <div className="text-center text-red-500 text-2xl p-10">Error: {error}</div>;
 
   return (
     <div className="p-6 my-20">
@@ -97,9 +91,7 @@ const Homepage = () => {
         </div>
       ) : filteredProducts.length === 0 ? (
         <div className="text-center py-10">
-          <p className="text-xl text-gray-700 mb-2">
-            Sorry, no products found matching "{searchTerm}"
-          </p>
+          <p className="text-xl text-gray-700 mb-2">Sorry, no products found matching "{searchTerm}"</p>
           <p className="text-gray-500">Please try a different search term</p>
           <button
             type="button"

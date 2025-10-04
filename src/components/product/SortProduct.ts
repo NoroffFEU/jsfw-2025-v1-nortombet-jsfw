@@ -1,4 +1,4 @@
-import { Product } from "../../API/fetchApi";
+import { Product } from "../../types/productTypes";
 
 export type SortOption =
   | "price_asc"
@@ -15,10 +15,7 @@ export type SortOption =
  * @param {SortOption} option - The sorting criteria
  * @returns {Product[]} A new array of products sorted according to the option
  */
-export const sortProducts = (
-  products: Product[],
-  option: SortOption
-): Product[] => {
+export const sortProducts = (products: Product[], option: SortOption): Product[] => {
   switch (option) {
     case "title_asc":
       return [...products].sort((a, b) => a.title.localeCompare(b.title));
@@ -29,13 +26,9 @@ export const sortProducts = (
     case "price_desc":
       return [...products].sort((a, b) => b.price - a.price);
     case "discountedPrice_asc":
-      return [...products].sort(
-        (a, b) => a.discountedPrice - b.discountedPrice
-      );
+      return [...products].sort((a, b) => a.discountedPrice - b.discountedPrice);
     case "discountedPrice_desc":
-      return [...products].sort(
-        (a, b) => b.discountedPrice - a.discountedPrice
-      );
+      return [...products].sort((a, b) => b.discountedPrice - a.discountedPrice);
     default:
       return products;
   }
