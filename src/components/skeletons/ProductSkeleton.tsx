@@ -1,3 +1,9 @@
+/**
+ * A skeleton placeholder component for a product card.
+ * Used to display loading state while product data is being fetched.
+ *
+ * @returns {JSX.Element} The product skeleton placeholder
+ */
 const ProductSkeleton = () => {
   return (
     <div className="relative bg-white border rounded-lg shadow-md p-4 animate-pulse">

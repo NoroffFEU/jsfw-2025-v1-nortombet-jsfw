@@ -6,6 +6,13 @@ import {
 } from "../../types/contactTypes";
 import BaseButton from "../../components/ui/BaseButton";
 
+/**
+ * A contact form component that collects full name, subject, email, and message.
+ * Performs client-side validation and triggers callbacks on submit or validation errors.
+ *
+ * @param {ContactFormProps} props - Props including callbacks for submit and validation error
+ * @returns {JSX.Element} The contact form JSX
+ */
 export const ContactForm = ({
   onSubmit,
   onValidationError,
@@ -19,6 +26,11 @@ export const ContactForm = ({
 
   const [errors, setErrors] = useState<FormErrors>({});
 
+  /**
+   * Validates the current form data and sets error messages.
+   *
+   * @returns {boolean} True if the form is valid, false otherwise
+   */
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
     let isValid = true;
@@ -48,6 +60,11 @@ export const ContactForm = ({
     return isValid;
   };
 
+  /**
+   * Handles input changes and updates form data state.
+   *
+   * @param {React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>} e - The input change event
+   */
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -65,6 +82,11 @@ export const ContactForm = ({
     }
   };
 
+  /**
+   * Handles form submission. Validates form and triggers the appropriate callback.
+   *
+   * @param {FormEvent} e - The form submission event
+   */
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 

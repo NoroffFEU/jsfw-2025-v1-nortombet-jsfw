@@ -5,7 +5,19 @@ import { toast } from "react-toastify";
 import { CartItemProps } from "../../types/cartTypes";
 import BaseButton from "../ui/BaseButton";
 
-const CartItemCard = ({ item, onIncrease, onDecrease, onRemove }: CartItemProps) => {
+/**
+ * A card component representing an item in the shopping cart.
+ * Displays item image, name, price, quantity controls, and remove functionality.
+ *
+ * @param {CartItemProps} props - Props for cart item functionality
+ * @returns {JSX.Element} The cart item card
+ */
+const CartItemCard = ({
+  item,
+  onIncrease,
+  onDecrease,
+  onRemove,
+}: CartItemProps) => {
   const [showConfirmRemove, setShowConfirmRemove] = useState(false);
 
   const handleDecrease = () => {
@@ -35,7 +47,11 @@ const CartItemCard = ({ item, onIncrease, onDecrease, onRemove }: CartItemProps)
   return (
     <article className="relative flex flex-col gap-4 items-center justify-between border-b-1 border-gray-300 py-4 text-black">
       <div className="flex justify-start w-full gap-2">
-        <img src={item.image} alt={item.name} className="w-20 h-20 object-cover" />
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-20 h-20 object-cover"
+        />
         <div className="flex flex-col w-3/5">
           <h3 className="text-lg text-wrap font-medium">{item.name}</h3>
           <p className="font-semibold">
@@ -87,10 +103,18 @@ const CartItemCard = ({ item, onIncrease, onDecrease, onRemove }: CartItemProps)
             Remove <strong>{item.name}</strong> from cart?
           </p>
           <div className="flex gap-4">
-            <BaseButton variant="danger" onClick={confirmRemove} className="px-3 py-1 text-white rounded">
+            <BaseButton
+              variant="danger"
+              onClick={confirmRemove}
+              className="px-3 py-1 text-white rounded"
+            >
               Yes
             </BaseButton>
-            <BaseButton variant="secondary" onClick={cancelRemove} className="px-3 py-1">
+            <BaseButton
+              variant="secondary"
+              onClick={cancelRemove}
+              className="px-3 py-1"
+            >
               No
             </BaseButton>
           </div>

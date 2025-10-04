@@ -1,4 +1,3 @@
-// Types for single product page by id.
 export interface Product {
   id: string;
   title: string;

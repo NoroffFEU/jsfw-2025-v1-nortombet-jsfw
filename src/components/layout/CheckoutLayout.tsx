@@ -1,4 +1,3 @@
-// components/layout/CheckoutLayout.tsx
 import { Outlet, useLocation } from "react-router-dom";
 import ProgressBar from "../ui/ProgressBar";
 
@@ -8,6 +7,12 @@ const CHECKOUT_STEPS = [
   { name: "Success", path: "/checkout/success" },
 ];
 
+/**
+ * Layout component for the checkout process.
+ * Displays a progress bar indicating the current step and renders child routes via Outlet.
+ *
+ * @returns {JSX.Element} The checkout layout with progress bar and routed content
+ */
 const CheckoutLayout = () => {
   const location = useLocation();
 

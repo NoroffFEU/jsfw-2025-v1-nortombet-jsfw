@@ -7,8 +7,17 @@ interface ItemCardProps {
   product: Product;
 }
 
+/**
+ * A card component that displays a product with image, title, price, discount, and rating.
+ * Links to the product detail page.
+ *
+ * @param {ItemCardProps} props - Props containing the product data
+ * @returns {JSX.Element} The product item card
+ */
 const ItemCard: React.FC<ItemCardProps> = ({ product }) => {
-  const discountPercent = Math.round(((product.price - product.discountedPrice) / product.price) * 100);
+  const discountPercent = Math.round(
+    ((product.price - product.discountedPrice) / product.price) * 100
+  );
 
   return (
     <div className="relative bg-white/80 border border-gray-300 hover:border-gray-500 rounded-lg shadow-md p-4">
@@ -19,18 +28,28 @@ const ItemCard: React.FC<ItemCardProps> = ({ product }) => {
           </span>
         )}
 
-        <img src={product.image.url} alt={product.image.alt} className="w-full h-48 object-cover rounded-t-lg" />
+        <img
+          src={product.image.url}
+          alt={product.image.alt}
+          className="w-full h-48 object-cover rounded-t-lg"
+        />
 
         <h2 className="text-xl font-semibold mt-4">{product.title}</h2>
 
         <div className="mt-2">
           {product.discountedPrice < product.price ? (
             <>
-              <p className="text-green-600 text-lg font-bold">${product.discountedPrice.toFixed(2)}</p>
-              <p className="text-sm text-gray-500 line-through">${product.price.toFixed(2)}</p>
+              <p className="text-green-600 text-lg font-bold">
+                ${product.discountedPrice.toFixed(2)}
+              </p>
+              <p className="text-sm text-gray-500 line-through">
+                ${product.price.toFixed(2)}
+              </p>
             </>
           ) : (
-            <p className="text-green-600 text-lg font-bold">${product.price.toFixed(2)}</p>
+            <p className="text-green-600 text-lg font-bold">
+              ${product.price.toFixed(2)}
+            </p>
           )}
         </div>
 

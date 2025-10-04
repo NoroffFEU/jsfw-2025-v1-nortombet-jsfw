@@ -1,5 +1,3 @@
-import React from "react";
-
 type SortOption =
   | "price_asc"
   | "price_desc"
@@ -9,9 +7,16 @@ type SortOption =
   | "discountedPrice_desc";
 
 interface SortDropdownProps {
+  /** Callback triggered when the selected sort option changes */
   onSortChange: (option: SortOption) => void;
 }
 
+/**
+ * A dropdown component for selecting product sorting options.
+ *
+ * @param {SortDropdownProps} props - Props including the change handler
+ * @returns {JSX.Element} The sort dropdown element
+ */
 const SortDropdown: React.FC<SortDropdownProps> = ({ onSortChange }) => {
   return (
     <div className="w-full flex items-center">
@@ -27,8 +32,12 @@ const SortDropdown: React.FC<SortDropdownProps> = ({ onSortChange }) => {
         <option value="title_desc">Title Z-A</option>
         <option value="price_asc">Price Low to High</option>
         <option value="price_desc">Price High to Low</option>
-        <option value="discountedPrice_asc">Discounted Price Low to High</option>
-        <option value="discountedPrice_desc">Discounted Price High to Low</option>
+        <option value="discountedPrice_asc">
+          Discounted Price Low to High
+        </option>
+        <option value="discountedPrice_desc">
+          Discounted Price High to Low
+        </option>
       </select>
     </div>
   );
